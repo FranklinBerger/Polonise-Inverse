@@ -58,6 +58,7 @@ _bufferKey = []
 _threadRun = True
 _delayFrame = 0
 _delayStep = 0
+_mem_k = []
 
 def init (col, row, delayFrame = 1, delayStep = 5):
     """
@@ -65,7 +66,7 @@ def init (col, row, delayFrame = 1, delayStep = 5):
     Initialisation du clavier
     col & row: liste contenant les N° GPIOs de chaque pin (dans l'ordre)
     """
-    global _col, _row, _mem, _threadRun, _delayFrame, _delayStep
+    global _col, _row, _mem, _threadRun, _delayFrame, _delayStep, _mem_k
     _delayFrame = delayFrame
     _delayStep = delayStep
     
@@ -85,9 +86,9 @@ def init (col, row, delayFrame = 1, delayStep = 5):
         index += 1
     
     # Initialisation anti-doublon
-    #r = [1] * len(_row)
-    #_row_mem = [r] * len(_col)
-    _mem = [[0,0,0,0,0,0,0],[1,1,1,1,1,1,1],[2,2,2,2,2,2,2],[3,3,3,3,3,3,3],[4,4,4,4,4,4,4]]
+    r = [0] * len(_row)
+    _mem = [r] * len(_col)
+    #_mem = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]]
     
 
 
@@ -109,7 +110,8 @@ def threadClavier (arg=None):
             c[1].value(0)
             time.sleep_ms(_delayStep)
             # Lecture lignes
-            print("C: " + str(c[0]) + " : " + str(_mem[c[0]]))
+            if DEBUG_MODE:
+                print("C: " + str(c[0]) + " : " + str(_mem[c[0]]))
             for r in _row:
                 #print("r: " + str(r) + " C: " + str(c) + " => " + str(_row_mem[c[0]][r[0]]))
                 r_val = r[1].value()
