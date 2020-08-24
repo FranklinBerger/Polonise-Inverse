@@ -1,0 +1,13 @@
+CGROM - stands for "Character Graphics Read only Memory". This ROM is part of the display microcontroller on the LCD and holds all the standard patterns for the 5 x 7 dot matrix characters. For instance, if you want to display character "A", you would send ASCII code 65 (decimal) to the DDRAM. The display controller looks up the pattern of dots to display for this code in the CGROM and lights up the ones appropriate for "A". The CGROM contents depend on the particular character set and model of display, US, Chinese etc. and cannot be changed.
+
+CGRAM - stands for "Character Graphics Random Access Memory" allows the user to define special supplementary non-standard character types that are not in the CGROM. You can load your own dot pattern shapes e.g. a rectangle into CGRAM and using certain reserved codes in DDRAM, call these up for display.
+
+DDRAM - stands for "Data Display Random Access Memory" and is the working data buffer of the display. Each character on the display has a corresponding DDRAM location and the byte loaded in DDRAM controls which character is displayed.
+
+#####################################################
+
+CGROM - signifie "caractères graphiques en lecture seule mémoire". Cette ROM fait partie du microcontrôleur d'affichage sur l'écran LCD et contient tous les modèles standard pour les caractères matriciels 5 x 7 points. Par exemple, si vous souhaitez afficher le caractère "A", vous enverrez le code ASCII 65 (décimal) à la DDRAM. Le contrôleur d'affichage recherche le motif de points à afficher pour ce code dans le CGROM et allume ceux appropriés pour "A". Le contenu du CGROM dépend du jeu de caractères et du modèle d'affichage particuliers, américain, chinois, etc. et ne peut pas être modifié.
+
+CGRAM - signifie "Character Graphics Random Access Memory" permet à l'utilisateur de définir des types de caractères supplémentaires non standard spéciaux qui ne sont pas dans le CGROM. Vous pouvez charger vos propres formes de motif de points, par exemple un rectangle dans CGRAM et en utilisant certains codes réservés dans DDRAM, appelez-les pour l'affichage.
+
+DDRAM - signifie "Data Display Random Access Memory" et est le tampon de données de travail de l'affichage. Chaque caractère sur l'écran a un emplacement DDRAM correspondant et l'octet chargé dans la DDRAM contrôle le caractère affiché.

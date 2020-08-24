@@ -1,0 +1,32 @@
+Conversion Solid Edge vers STEP
+Date: mercredi,mai 20,2020 01 :49
+Fichier source: C:\Users\Franklin\Desktop\Martinez\Projets\Polonise Inverse\4_Fabrication\Version_0.1\C_KiCad\projet\G77.stp
+Auteur: Inconnu
+Organisation: Inconnu
+Système source: Inconnu
+
+Matériel:
+Processeur: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+Système d'exploitation: Windows 7 Professional Service Pack 1
+Mémoire installée: 15.87 GB
+
+Informations sur le logiciel
+Version de Parasolid: 26.0.139
+Version de PSBodyShop: 16.1.150
+Version du convertisseur: 16.42.0
+Version de Solid Edge: 106.00.00.100 x64
+
+Options d'exportation STEP
+Exporter AP214: Désactivé
+Exporter feuilles de construction: Désactivé
+Importer solides de construction: Désactivé
+Exporter fils de construction: Désactivé
+Exporter uniquement les pièces affichées: Désactivé
+Convertir corps solides comme corps solide Classe VI: Actif
+Exporter unités: Millimètres
+Format d'assemblage élément en correspondance: Actif
+
+Etape 1 sur 1 - conversion de Parasolid en types de données externes
+Fin de  l'opération de conversion
+Temps nécessaire à la conversion:00 : 00 : 00
+Ecriture fichier converti en cours...
