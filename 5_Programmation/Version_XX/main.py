@@ -44,8 +44,8 @@ import LCD_2004
 """ ------ Code Utile ------ """
 " --- Initialisation --- "
 # --- Initialisation Clavier
-pins_col_N = micropython.const( [12, 13, 14, 15, 16] )
-pins_row_N = micropython.const( [17, 18, 19, 21, 22, 23, 25] )
+pins_col_N = micropython.const( [17, 21, 14, 15, 16] )
+pins_row_N = micropython.const( [35, 18, 19, 34, 22, 23, 25] )
 
 Clavier.init(pins_col_N, pins_row_N)
 
@@ -75,4 +75,5 @@ LCD_2004.init(
 " --- Systeme --- "
 
 
-
+while True:
+    pass

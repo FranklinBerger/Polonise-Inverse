@@ -1,6 +1,6 @@
 # CONSTANTES & PARAMETRES
 import micropython
-DEBUG_MODE = micropython.const(False)
+DEBUG_MODE = micropython.const(True)
 
 doc="""
 Fichier: Clavier.py
@@ -37,6 +37,7 @@ if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 # Imports bibliotheques interne
 import machine
 import time
+import _thread
 
 # Imports bibliotheques externe officielle (lib)
 # Imports bibliotheques externe maisons
@@ -55,12 +56,12 @@ _col = []
 _row = []
 _mem =  []
 _bufferKey = []
-_threadRun = True
+_threadRun = False
+_threadID = None
 _delayFrame = 0
 _delayStep = 0
-_mem_k = []
 
-def init (col, row, delayFrame = 1, delayStep = 5):
+def init (col, row, delayFrame = 5, delayStep = 5):
     """
     Fonction: init (col, row, delayFrame = 50, delayStep = 5)
     Initialisation du clavier
@@ -75,22 +76,31 @@ def init (col, row, delayFrame = 1, delayStep = 5):
     row_mem = []
     for r in row:
         _row.append([ index, machine.Pin(r,mode=machine.Pin.IN,pull=machine.Pin.PULL_DOWN) ])
-        row_mem.append(index + 1)
+        #row_mem.append(index + 1)
         index += 1
     # Initialisation colonnes
     index = 0
     for c in col:
         # value = 1 : colonne desactivee
         _col.append([ index, machine.Pin(c,mode=machine.Pin.OPEN_DRAIN,value=1) ])
-        _mem.append(row_mem)
+        #_mem.append(row_mem)
         index += 1
     
-    # Initialisation anti-doublon
-    r = [0] * len(_row)
-    _mem = [r] * len(_col)
-    #_mem = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]]
+    # Initialisation memoire pour anti-doublon
+    # /!\ Si on fait [[0] * len(_row)] * len(_col), on se retrouve avec des sous-listes
+    # liees entre elles (a tester pour voir le resultat)
+    _mem = [[0] * len(_row) for _ in range(len(_col))]
     
+    # Lance le thread de lecture du clavier
+    setThread(True)
 
+
+def _startThread ():
+    """
+    Fonction: _startThread ()
+    Lance via le module _thread le thread de lecture du clavier
+    """
+    _thread.start_new_thread(threadClavier, [])
 
 
 " --- Systeme --- "
@@ -99,8 +109,7 @@ def threadClavier (arg=None):
     Fonction: threadClavier (arg=None)
     Thread de lecture en continu du clavier
     """
-    global _col, _row, _mem, _threadRun, _delayFrame, _delayStep, _bufferKey
-    
+    global _col, _row, _threadRun, _delayFrame, _delayStep, _bufferKey
     
     # Jusqu'a ce qu'on arete le thread
     while _threadRun:
@@ -109,35 +118,77 @@ def threadClavier (arg=None):
             # Activation colonne et stabilisation HW
             c[1].value(0)
             time.sleep_ms(_delayStep)
-            # Lecture lignes
-            if DEBUG_MODE:
-                print("C: " + str(c[0]) + " : " + str(_mem[c[0]]))
+            # Lecture lignes                
             for r in _row:
                 #print("r: " + str(r) + " C: " + str(c) + " => " + str(_row_mem[c[0]][r[0]]))
                 r_val = r[1].value()
                 r_Oval = _mem[c[0]][r[0]]
                 if r[0]==0 and c[0]==4 and DEBUG_MODE:
                     print("...")
+                    print("C: " + str(c[0]) + " : " + str(_mem[c[0]]))
                     print(r_val)
                     print(r_Oval)
                 # Test flanc montant par XOR
                 if r_val == True and r_val ^ r_Oval:
                     # Enregistrement pression dans buffer
                     _bufferKey.append([ r[0] , c[0] ])
-                # Enregistrement valleur pour suite (anti-doublon)
+                # Enregistrement valeur pour suite (anti-doublon)
                 _mem[c[0]][r[0]] = r_val
             # Desactivation colonne
             c[1].value(1)
         # Fin frame, delais
         time.sleep_ms(_delayFrame)
-    
-    
 
+
+def setThread (run):
+    """
+    Fonction: setThread (run)
+    Arete / lance le thread de lecture du clavier
+    Fonction utilisat·eur·rice
+    """
+    global _threadRun, _threadID
+    if run and _threadRun == False:
+        _threadRun = True
+        if not DEBUG_MODE:
+            _startThread ()
+        else:
+            raise Exception("Le thread Clavier n'as pas ete lance car le systeme Clavier est en mode debug")
+    else:
+        _threadRun = False
+
+def readBuffer (nKey = None):
+    """
+    Fonction: readBuffer ()
+    Renvoie le buffer contenant les touches pressees et vide ce dernier
+    """
+    global _bufferKey
+    k = _bufferKey[: nKey]
+    _bufferKey = _bufferKey[nKey if nKey != None else len(_bufferKey) :]
+    return k
+
+def seeBuffer (nKey = None):
+    """
+    Fonction: seeBuffer ()
+    Renvoie le buffer contenant les touches pressees sans le vider
+    """
+    global _bufferKey
+    return _bufferKey[:nKey]
+    
+def clearBuffer ():
+    """
+    Fonction:clearBuffer ()
+    Vide le buffer
+    """
+    global _bufferKey
+    _bufferKey = []
 
 
 """ ------ Algoritme de presentation ------ """
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
+
+
+
 
 
