@@ -28,14 +28,17 @@ if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
+import time
 
 # Imports bibliotheques externe officielle (lib)
 
 
 # Imports bibliotheques externe maisons
 import Clavier
+import Clavier_RPN
 import RPN
 import PCF8574
+import LCD_RPN
 import LCD_2004
 
 
@@ -43,11 +46,9 @@ import LCD_2004
 
 """ ------ Code Utile ------ """
 " --- Initialisation --- "
-# --- Initialisation Clavier
-pins_col_N = micropython.const( [17, 21, 14, 15, 16] )
-pins_row_N = micropython.const( [35, 18, 19, 34, 22, 23, 25] )
 
-Clavier.init(pins_col_N, pins_row_N)
+
+LCD_RPN.init()
 
 
 
@@ -56,24 +57,25 @@ Clavier.init(pins_col_N, pins_row_N)
 
 
 
-# --- Initialisation LCD2004A
-# Initialisation pin directes
-pin_BL_LCD = machine.Pin(5, mode = machine.Pin.OPEN_DRAIN)
-pin_RS_LCD = machine.Pin(26, mode = machine.Pin.OUT)
-pin_E_LCD = machine.Pin(27, mode = machine.Pin.OUT)
-# Initialisation I2C pour Data
-i2c_LCD_PCF8574 = machine.I2C(0, scl=machine.Pin(32), sda=machine.Pin(33))
-lcd_PCF8574 = PCF8574.PCF8574(i2c_LCD_PCF8574)
-# Initialisation Ecrant
-LCD_2004.init(
-    pin_RS_LCD,
-    pin_E_LCD,
-    pin_BL_LCD,
-    lcd_PCF8574)
+
+
 
 
 " --- Systeme --- "
 
 
 while True:
-    pass
+    # Ne fait quelque-chose que si une touche a ete pressee, sinon rien
+    if Clavier_RPN.haveToAct():
+        # On fait une recuperation d'erreur ici car les fonctions de la RPN en on pas
+        try:
+            Clavier_RPN.exec()
+        except:
+            hasError = True
+        else:
+            hasError = False
+        # On affiche la RPN a l'ecrant
+        LCD_RPN.showRPN(error = hasError)
+    else:
+        pass
+

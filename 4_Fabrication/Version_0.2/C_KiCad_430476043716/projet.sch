@@ -5,11 +5,11 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
 Title "Calculatrice Polonaise Inversse"
-Date ""
+Date "2020-08-26"
 Rev ""
-Comp "Pour ETML 2020"
-Comment1 "Sleny Martinez"
-Comment2 ""
+Comp "ETML - Ecole des Métiers"
+Comment1 "Pré-apprentissages 2020-2021"
+Comment2 "Sleny Martinez"
 Comment3 ""
 Comment4 ""
 $EndDescr

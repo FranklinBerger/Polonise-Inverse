@@ -50,7 +50,8 @@ _pile = {
     "Y" : 0.0 ,
     "Z" : 0.0 ,
     "T" : 0.0 ,
-    "TrueX" : False
+    "TrueX" : False ,
+    "AfterEnt" : False
 }
 
 " --- Systeme --- "
@@ -120,6 +121,13 @@ def writeX ( char ):
     _setX( _getX() + char if get("TrueX") else char )
     set("TrueX", True)
 
+def _actOnXY (newX):
+    """
+    Fonction: writeX ( char )
+    "Ecrase" Y dans X, X = newX
+    """
+    set("Y", newX)
+    shiftDown()
 
 # --- Actions sur la pile ---
 def shiftUp ():
@@ -146,15 +154,45 @@ def shiftDown ():
     set("X" , get("Y") )
     set("Y" , get("Z") )
     set("Z" , get("T") )
-    set("TrueX" , False )
+    set("TrueX" , True )
     
 
 
+# --- Actions mathematique ---
+def add():
+    """
+    Fonction: add ()
+    Y + X
+    """
+    _actOnXY(get("Y") + get("X"))
 
+def subtract():
+    """
+    Fonction: sub ()
+    Y - X
+    """
+    _actOnXY(get("Y") - get("X"))
+    
+def multiply():
+    """
+    Fonction: add ()
+    Y * X
+    """
+    _actOnXY(get("Y") * get("X"))
 
+def divide():
+    """
+    Fonction: add ()
+    Y / X
+    """
+    _actOnXY(get("Y") / get("X"))
 
-
-
+def modulo():
+    """
+    Fonction: add ()
+    Y % X
+    """
+    _actOnXY(get("Y") % get("X"))
 
 
 

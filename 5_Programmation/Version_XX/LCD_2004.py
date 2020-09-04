@@ -110,8 +110,6 @@ def _send (RS, Datas):
     time.sleep_us(1)
     # Validation des informations (flanc descendant E)
     _E.value(0)
-    # Delais d'integration par l'ecrant
-    time.sleep_us(1)
     
 
 def _showDisplay (C = False, B = False):
@@ -185,6 +183,7 @@ def setLine (line, text):
     Modifie une ligne de l'ecrant
     Le texte doit faire au maximum 20 caracteres
     """
+    text = str(text)
     buffer = getBuffer()
     buffer[line] = text + ((20 - len(text)) * " ") if len(text) <= 20 and type(text) == str else ""
     if buffer[line] == "": raise Exception("text doit etre un string de maximum 20 carateres de long.")
@@ -197,7 +196,12 @@ def setChar (line, pos, char):
     """
     global _LCD_buffer
     # On fait +1 pour que le premier char soit le N°1
-    _LCD_buffer[line][pos + 1] = char
+    buffer = list(_LCD_buffer[line])
+    buffer[pos - 1] = char
+    nBuffer = ""
+    for c in buffer:
+        nBuffer += c
+    _LCD_buffer[line] = nBuffer
 
 def writeChar (char):
     """
@@ -205,6 +209,21 @@ def writeChar (char):
     Ecrit un caracter a l'ecrant
     """
     _send(1, _getCharCGROMadress(char))
+
+def writeLine (line, full = True):
+    """
+    Fonction: _writeLine (char)
+    Ecrit une ligne
+    Si full = False, ecrit seulement le texte demande, sinon remplis la ligne avec des espaces
+    """
+    line = str(line)
+    if full:
+        line = line + ((20 - len(line)) * " ") if len(line) <= 20 and type(line) == str else " " * 20
+    else:
+        line = line if len(line) <= 20 and type(line) == str else ""
+    #print(line)
+    for l in line:
+        writeChar(l)
 
 def clearDisplay ():
     """
@@ -229,8 +248,21 @@ def fetch ():
         for c in getBuffer()[i]:
             writeChar(c)
     
-
-
+def setCursorPos (line, col):
+    """
+    Fonction: setCursorPos ()
+    Deplace le curseur de l'ecrant a la position
+    donnee par line (1 a 4) et col (1 a 20)
+    """
+    # Le deplacement se fait via la commande 0b1XXXXXXX
+    # XXXXXXX correspond a la position (de 0x00 a 0x7F)
+    # On commence par calculer cette valleur
+    posAddress = 20 * [0, 0, 2, 1, 3][line]
+    posAddress += col - 1
+    # On aditionne a la commande de base
+    command = 0x80 + posAddress
+    # On envoie la valleur
+    _send(0, command)
 
 
 
@@ -243,7 +275,7 @@ def fetch ():
 # Note: tous les caracteres (natament les symboles speciaux) n'ont pas ete
 # ajoutes (voir a partir de 0x8X) parce que j'avais la flemme
 CGROM = micropython.const(
-"""□□□□□□□□□□□□□□□□""" + # 0x0X
+"""\xFF□□□□□□□□□□□□□□□""" + # 0x0X
 """□□□□□□□□□□□□□□□□""" + # 0x1X 
 """ !"#$%&'()*+,-./""" + # 0x2X 
 """0123456789:;<=>?""" + # 0x3X 
@@ -275,12 +307,11 @@ def _getCharCGROMadress (char):
         raise Exception("Caracter " + char + " inconnu ou invalide.")
     else:
         return index
-
-
-
+    
 
 """ ------ Algoritme de presentation ------ """
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
+
 

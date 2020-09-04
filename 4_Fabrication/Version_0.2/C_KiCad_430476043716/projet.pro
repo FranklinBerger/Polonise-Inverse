@@ -1,6 +1,6 @@
-update=26.06.2020 17:03:42
+update=26.08.2020 14:43:47
 version=1
-last_client=kicad
+last_client=eeschema
 [general]
 version=1
 RootSch=
@@ -247,7 +247,7 @@ dPairGap=0.25
 dPairViaGap=0.25
 [schematic_editor]
 version=1
-PageLayoutDescrFile=C:/Users/Franklin/Desktop/Martinez/KiCad Projets/KiCAD_LIB_2019/Cartouche_ELO.kicad_wks
+PageLayoutDescrFile=C:/Users/pl17jnu/Desktop/Martinez/KiCad Projets/KiCAD_LIB_2019/Cartouche_Préapp.kicad_wks
 PlotDirectoryName=
 SubpartIdSeparator=0
 SubpartFirstId=65

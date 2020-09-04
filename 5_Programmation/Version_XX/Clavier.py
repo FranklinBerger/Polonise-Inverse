@@ -1,6 +1,6 @@
 # CONSTANTES & PARAMETRES
 import micropython
-DEBUG_MODE = micropython.const(True)
+DEBUG_MODE = micropython.const(False)
 
 doc="""
 Fichier: Clavier.py
@@ -100,11 +100,11 @@ def _startThread ():
     Fonction: _startThread ()
     Lance via le module _thread le thread de lecture du clavier
     """
-    _thread.start_new_thread(threadClavier, [])
+    _thread.start_new_thread(_threadClavier, [])
 
 
 " --- Systeme --- "
-def threadClavier (arg=None):
+def _threadClavier (arg=None):
     """
     Fonction: threadClavier (arg=None)
     Thread de lecture en continu du clavier
@@ -124,10 +124,11 @@ def threadClavier (arg=None):
                 r_val = r[1].value()
                 r_Oval = _mem[c[0]][r[0]]
                 if r[0]==0 and c[0]==4 and DEBUG_MODE:
-                    print("...")
-                    print("C: " + str(c[0]) + " : " + str(_mem[c[0]]))
-                    print(r_val)
-                    print(r_Oval)
+                    None
+                    # print("...")
+                    # print("C: " + str(c[0]) + " : " + str(_mem[c[0]]))
+                    # print(r_val)
+                    # print(r_Oval)
                 # Test flanc montant par XOR
                 if r_val == True and r_val ^ r_Oval:
                     # Enregistrement pression dans buffer
@@ -156,23 +157,23 @@ def setThread (run):
     else:
         _threadRun = False
 
-def readBuffer (nKey = None):
+def readBuffer (nKey = None, remove = True):
     """
     Fonction: readBuffer ()
     Renvoie le buffer contenant les touches pressees et vide ce dernier
+    nKey = Nombre de touches max a extraire
+    remove = Faut-il supprimer les touches lues? (De base oui)
     """
     global _bufferKey
+    # Contre index out of range
+    #print("---")
+    #print("nKey : " + str(nKey))
+    #print("bufferKey : " + str(_bufferKey))
+    nKey = nKey if nKey != None and nKey <= len(_bufferKey) else len(_bufferKey)
     k = _bufferKey[: nKey]
-    _bufferKey = _bufferKey[nKey if nKey != None else len(_bufferKey) :]
+    if remove:
+        _bufferKey = _bufferKey[nKey if nKey != None else len(_bufferKey) :]
     return k
-
-def seeBuffer (nKey = None):
-    """
-    Fonction: seeBuffer ()
-    Renvoie le buffer contenant les touches pressees sans le vider
-    """
-    global _bufferKey
-    return _bufferKey[:nKey]
     
 def clearBuffer ():
     """
@@ -182,12 +183,19 @@ def clearBuffer ():
     global _bufferKey
     _bufferKey = []
 
+def any ():
+    """
+    Fonction: any ()
+    Renvoie le nombre de touches dans le buffer
+    """
+    global _bufferKey
+    return len(_bufferKey)
+
 
 """ ------ Algoritme de presentation ------ """
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-
 
 
 
