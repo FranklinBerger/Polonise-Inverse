@@ -116,17 +116,17 @@ _actionTouche = micropython.const(
 [ _pass , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , R.divide ] ,
 [ _pass , lambda: R.writeX("7") , lambda: R.writeX("8") , lambda: R.writeX("9") , R.multiply ] ,
-[ _pass , lambda: R.writeX("4") , lambda: R.writeX("5") , lambda: R.writeX("6") , R.subtract ] ,
-[ _pass , lambda: R.writeX("1") , lambda: R.writeX("2") , lambda: R.writeX("3") , R.add ] ,
-[ _pass , lambda: R.writeX("0") , lambda: R.writeX(".") , R.opposite , R.shiftUp ]])
+[ R.rotateDown , lambda: R.writeX("4") , lambda: R.writeX("5") , lambda: R.writeX("6") , R.subtract ] ,
+[ R.swapXY , lambda: R.writeX("1") , lambda: R.writeX("2") , lambda: R.writeX("3") , R.add ] ,
+[ R.delX , lambda: R.writeX("0") , lambda: R.writeX(".") , R.opposite , R.shiftUp ]])
 
 _actionTouche2nd = micropython.const(
 [[ _2ndAct , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , R.modulo ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
-[ _pass , _pass , _pass , _pass , _pass ] ,
-[ _pass , _pass , _pass , _pass , _pass ] ,
+[ R.rotateUp , _pass , _pass , _pass , _pass ] ,
+[ R.lastX , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , R.invert , _pass ]])
 
 

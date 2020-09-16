@@ -51,7 +51,8 @@ _pile = {
     "Z" : 0.0 ,
     "T" : 0.0 ,
     "TrueX" : False ,
-    "AfterEnt" : False
+    "AfterEnt" : False ,
+    "LastX" : 0
 }
 
 " --- Systeme --- "
@@ -119,8 +120,9 @@ def writeX ( char ):
     """
     # Si apres "Ent", on doit aire un shift up avant ecriture pour ne pas
     # supprimer notre resultat
-    if _get("AfterEnt"):
+    if get("AfterEnt"):
         shiftUp()
+        set("AfterEnt", False)
     # Si TrueX a False (X = affichage), reecrit sur une base brut
     _setX( _getX() + char if get("TrueX") else char )
     set("TrueX", True)
@@ -135,6 +137,15 @@ def _actOnXY (newX):
     set("AfterEnt", True)
 
 # --- Actions sur la pile ---
+def swapXY ():
+    """
+    Fonction: swapXY ()
+    Echange les valeurs de X et Y
+    """
+    oldX = get("X")
+    set("X", get("Y"))
+    set("Y", oldX)
+
 def shiftUp ():
     """
     Fonction: shiftUp ()
@@ -142,10 +153,12 @@ def shiftUp ():
     Fait monter la pile d'un etage => libere la couche X
     A ne pas confondre avec rotateUp
     La valleur T sera perdue
+    Enreistre la veleur dans LastX
     """
     set("T" , get("Z") )
     set("Z" , get("Y") )
     set("Y" , get("X") )
+    set("LastX", get("X"))
     set("TrueX" , False )
 
 def shiftDown ():
@@ -161,6 +174,26 @@ def shiftDown ():
     set("Z" , get("T") )
     set("TrueX" , True )
 
+def rotateUp ():
+    """
+    Fonction: rotateUp ()
+    Fait tourner la le vers le haut
+    A ne pas confondre avec shiftUp()
+    """
+    oldT = get("T")
+    shiftUp()
+    set("X", oldT)
+
+def rotateDown ():
+    """
+    Fonction: rotateDown ()
+    Fait tourner la le vers le bas
+    A ne pas confondre avec shiftDown()
+    """
+    oldX = get("X")
+    shiftDown()
+    set("T", oldX)
+
 def clear ():
     """
     Fonction: clear ()
@@ -175,7 +208,31 @@ def clear ():
         "TrueX" : False ,
         "AfterEnt" : False
     }
-    
+
+def lastX ():
+    """
+    Fonction: lastX ()
+    Remet la derniere valeur de X entree (par shiftUp) dans X
+    """
+    set("X", get("LastX"))
+
+def delX ():
+    """
+    Fonction: delX ()
+    Supprime un caractere de X
+    Si plus rien, met a 0
+    Si X est un chiffre valide (p.ex apres addition), remet a 0
+    """
+    _setX( _getX()[:-1] if type(_getX()) == str and len(_getX()) > 1 else "0" )
+    set("TrueX", False if _getX() == "0" else True)
+
+def clearX ():
+    """
+    Fonction: clearX ()
+    Met X a 0
+    """
+    _setX("0")
+    set("TrueX", False)
 
 # --- Actions mathematique ---
 def opposite():

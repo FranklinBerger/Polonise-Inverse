@@ -68,6 +68,7 @@ while True:
     # Ne fait quelque-chose que si une touche a ete pressee, sinon rien
     if Clavier_RPN.haveToAct():
         # On fait une recuperation d'erreur ici car les fonctions de la RPN en on pas
+        Clavier_RPN.exec()
         try:
             Clavier_RPN.exec()
         except:
