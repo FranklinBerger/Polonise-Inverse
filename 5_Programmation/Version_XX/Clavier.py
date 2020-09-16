@@ -61,7 +61,7 @@ _threadID = None
 _delayFrame = 0
 _delayStep = 0
 
-def init (col, row, delayFrame = 5, delayStep = 5):
+def init (col, row, delayFrame = 5, delayStep = 3):
     """
     Fonction: init (col, row, delayFrame = 50, delayStep = 5)
     Initialisation du clavier

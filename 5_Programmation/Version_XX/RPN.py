@@ -117,17 +117,22 @@ def writeX ( char ):
     Ecriture de X
     Le caractere doit etre 0-9 ou .
     """
+    # Si apres "Ent", on doit aire un shift up avant ecriture pour ne pas
+    # supprimer notre resultat
+    if _get("AfterEnt"):
+        shiftUp()
     # Si TrueX a False (X = affichage), reecrit sur une base brut
     _setX( _getX() + char if get("TrueX") else char )
     set("TrueX", True)
 
 def _actOnXY (newX):
     """
-    Fonction: writeX ( char )
+    Fonction: _actOnXY (newX)
     "Ecrase" Y dans X, X = newX
     """
     set("Y", newX)
     shiftDown()
+    set("AfterEnt", True)
 
 # --- Actions sur la pile ---
 def shiftUp ():
@@ -155,10 +160,37 @@ def shiftDown ():
     set("Y" , get("Z") )
     set("Z" , get("T") )
     set("TrueX" , True )
+
+def clear ():
+    """
+    Fonction: clear ()
+    Remet toutes les valeurs de la pile a 0
+    """
+    global _pile
+    _pile = {
+        "X" : "0" ,
+        "Y" : 0.0 ,
+        "Z" : 0.0 ,
+        "T" : 0.0 ,
+        "TrueX" : False ,
+        "AfterEnt" : False
+    }
     
 
-
 # --- Actions mathematique ---
+def opposite():
+    """
+    Fonction: opposite ()
+    Y + X
+    """
+    _setX(-get("X"))
+
+def invert():
+    """
+    1 / X
+    """
+    _setX( 1 / get("X"))
+
 def add():
     """
     Fonction: add ()

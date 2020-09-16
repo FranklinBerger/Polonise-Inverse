@@ -112,13 +112,13 @@ def haveToAct ():
 # Chaque touche va appeler une fonction / methode
 # La touche 2nd va faire passer la methode de la table _actionTouche a la table _actionTouche2nd
 _actionTouche = micropython.const(
-[[ _2ndAct , _pass , _pass , _pass , _pass ] ,
+[[ _2ndAct , _pass , _pass , _pass , R.clear ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , R.divide ] ,
 [ _pass , lambda: R.writeX("7") , lambda: R.writeX("8") , lambda: R.writeX("9") , R.multiply ] ,
 [ _pass , lambda: R.writeX("4") , lambda: R.writeX("5") , lambda: R.writeX("6") , R.subtract ] ,
 [ _pass , lambda: R.writeX("1") , lambda: R.writeX("2") , lambda: R.writeX("3") , R.add ] ,
-[ _pass , lambda: R.writeX("0") , lambda: R.writeX(".") , _pass , R.shiftUp ]])
+[ _pass , lambda: R.writeX("0") , lambda: R.writeX(".") , R.opposite , R.shiftUp ]])
 
 _actionTouche2nd = micropython.const(
 [[ _2ndAct , _pass , _pass , _pass , _pass ] ,
@@ -127,7 +127,7 @@ _actionTouche2nd = micropython.const(
 [ _pass , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
-[ _pass , _pass , _pass , _pass , _pass ]])
+[ _pass , _pass , _pass , R.invert , _pass ]])
 
 
 """ ------ Algoritme de presentation ------ """

@@ -94,7 +94,7 @@ def showRPN(error = False):
         LCD_2004.setChar(1, 20, "\xff")
     # Cas d'une erreur
     if error:
-        LCD_2004.setLine(4, "X: ERROR")
+        LCD_2004.setLine(4, "X:ERROR")
     # Refresh l'ecrant
     LCD_2004.fetch()
     
