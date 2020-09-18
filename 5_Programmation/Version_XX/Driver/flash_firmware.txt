@@ -1,8 +1,0 @@
-REM Flash à 3V3 fixe (GPIO12 utilisé)
-espefuse.py -p COM1 set_flash_voltage 3.3V
-
-REM Vidange de la flash
-esptool.py --chip esp32 --port COM1 erase_flash
-
-REM Ecriture firmware
-esptool.py --chip esp32 --port COM1 write_flash 0x1000 "C:\Users\BA Payerne\Desktop\Martinez\Projets\Polonise Inverse\5_Programmation\Version_XX\Driver\esp32-idf3-20191220-v1.12.bin"

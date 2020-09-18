@@ -14,7 +14,7 @@ Des systemes de gestion de la pile (rotation, ecriture des niveaux, etc...)
 sont contenu ainsi que de nombreuses fonctions mathematiques communes
 Tous les nombres sont contenu au format flotant decimal. On pourra les
 recuperer sous ce format via get ( layer ) ou arrondi sans perte via getInt( layer )
-Gestion aussi de l'ecriture d'une valleur X via 
+Gestion aussi de l'ecriture d'une valleur X via
 
 Contenu:
 
@@ -27,13 +27,15 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
 import math
 
 # Imports bibliotheques externe officielle (lib)
+#import mpmath
+
 # Imports bibliotheques externe maisons
 
 
@@ -72,7 +74,7 @@ def getPile ():
 
 def set ( layer , val ):
     """
-    Fonction: set ( layer , val )  
+    Fonction: set ( layer , val )
     Modifie la valleur de l'etage layer de la pile
     """
     global _pile
@@ -98,7 +100,7 @@ def getInt ( layer ):
 # --- Ecriture de X
 def _setX ( val ):
     """
-    Fonction: setX ( val )  
+    Fonction: setX ( val )
     Modifie la valleur de X en brut
     """
     global _pile
@@ -106,12 +108,12 @@ def _setX ( val ):
 
 def _getX ():
     """
-    Fonction: getX ()  
+    Fonction: getX ()
     Obtient la valeur de X en brut
     """
     global _pile
     return _pile["X"]
-    
+
 def writeX ( char ):
     """
     Fonction: writeX ( char )
@@ -235,53 +237,121 @@ def clearX ():
     set("TrueX", False)
 
 # --- Actions mathematique ---
-def opposite():
+def opposite ():
     """
     Fonction: opposite ()
     Y + X
     """
     _setX(-get("X"))
 
-def invert():
+def invert ():
     """
     1 / X
     """
     _setX( 1 / get("X"))
 
-def add():
+def add ():
     """
     Fonction: add ()
     Y + X
     """
     _actOnXY(get("Y") + get("X"))
 
-def subtract():
+def sigma ():
+    """
+    Fonction: sigma ()
+    X = somme de tous les x de x a 1
+    P.ex: sigma de 5 = 5+4+3+2+1 = 15
+    On la calcul par f(x) = (x * (x+1)) / 2
+    """
+    x = get("X")
+    _setX( ((x+1) * x) / 2 )
+
+def subtract ():
     """
     Fonction: sub ()
     Y - X
     """
     _actOnXY(get("Y") - get("X"))
-    
-def multiply():
+
+def round ():
     """
-    Fonction: add ()
+    Fonction: round ()
+    X = round(X)
+    """
+    _setX( float( int( get("X") ) ) )
+
+def multiply ():
+    """
+    Fonction: multiply ()
     Y * X
     """
     _actOnXY(get("Y") * get("X"))
 
-def divide():
+def factorial ():
+    """
+    Fonction: factorial ()
+    X = X!
+    """
+    x = 1
+    for i in range(get("X"), 1, -1): x *= i
+    _setX( x )
+
+def divide ():
     """
     Fonction: add ()
     Y / X
     """
     _actOnXY(get("Y") / get("X"))
 
-def modulo():
+def modulo ():
     """
     Fonction: add ()
     Y % X
     """
     _actOnXY(get("Y") % get("X"))
+
+def pi ():
+    """
+    Fonction: pi ()
+    X = pi (3.141593)
+    """
+    _setX(math.pi)
+
+def e ():
+    """
+    Fonction: e ()
+    X = e (2.718282)
+    """
+    _setX(math.e)
+
+def square ():
+    """
+    Fonction: square ()
+    X = X^2
+    """
+    _setX( math.pow( get("X") , 2 ) )
+
+def square_root ():
+    """
+    Fonction: square_root ()
+    X = racine carree de X
+    """
+    _setX( math.pow( get("X") , (1/2) ) )
+
+def power_to ():
+    """
+    Fonction: power_to ()
+    X = Y^X
+    """
+    _actOnXY( math.pow( get("Y") , get("X") ) )
+
+def root ():
+    """
+    Fonction: square_root ()
+    X = racine Xeme de Y
+    """
+    _actOnXY( math.pow( get("Y") , (1/get("X")) ) )
 
 
 

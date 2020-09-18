@@ -23,8 +23,10 @@ Auteur·e:
 
 
 """ ------ Imports ------ """
+# Augmentation de l'optimisation a la compilation
+micropython.opt_level(3)
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -47,19 +49,7 @@ import LCD_2004
 """ ------ Code Utile ------ """
 " --- Initialisation --- "
 
-
 LCD_RPN.init()
-
-
-
-
-
-
-
-
-
-
-
 
 " --- Systeme --- "
 
@@ -67,8 +57,10 @@ LCD_RPN.init()
 while True:
     # Ne fait quelque-chose que si une touche a ete pressee, sinon rien
     if Clavier_RPN.haveToAct():
-        # On fait une recuperation d'erreur ici car les fonctions de la RPN en on pas
+        # Decomenter pour voir les erreurs des actions
         Clavier_RPN.exec()
+
+        # On fait une recuperation d'erreur ici car les fonctions de la RPN en on pas
         try:
             Clavier_RPN.exec()
         except:
@@ -79,4 +71,3 @@ while True:
         LCD_RPN.showRPN(error = hasError)
     else:
         pass
-

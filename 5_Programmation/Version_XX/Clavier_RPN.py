@@ -30,7 +30,7 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -61,8 +61,8 @@ def exec ():
     """
     # Recuperation valleur du 2dn et des fonctions a executer
     global _2nd, _actionTouche, _actionTouche2nd
-    
-    # Definition du nombre d'actions 
+
+    # Definition du nombre d'actions
     # Ralisation des opperations
     for touche in Clavier.readBuffer():
         # Pas de 2nd
@@ -114,7 +114,7 @@ def haveToAct ():
 _actionTouche = micropython.const(
 [[ _2ndAct , _pass , _pass , _pass , R.clear ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
-[ _pass , _pass , _pass , _pass , R.divide ] ,
+[ lambda: R.writeX("e") , R.pi , R.square , R.power_to, R.divide ] ,
 [ _pass , lambda: R.writeX("7") , lambda: R.writeX("8") , lambda: R.writeX("9") , R.multiply ] ,
 [ R.rotateDown , lambda: R.writeX("4") , lambda: R.writeX("5") , lambda: R.writeX("6") , R.subtract ] ,
 [ R.swapXY , lambda: R.writeX("1") , lambda: R.writeX("2") , lambda: R.writeX("3") , R.add ] ,
@@ -123,10 +123,10 @@ _actionTouche = micropython.const(
 _actionTouche2nd = micropython.const(
 [[ _2ndAct , _pass , _pass , _pass , _pass ] ,
 [ _pass , _pass , _pass , _pass , _pass ] ,
-[ _pass , _pass , _pass , _pass , R.modulo ] ,
-[ _pass , _pass , _pass , _pass , _pass ] ,
-[ R.rotateUp , _pass , _pass , _pass , _pass ] ,
-[ R.lastX , _pass , _pass , _pass , _pass ] ,
+[ lambda: R.writeX("e-") , R.e , R.square_root , R.root , R.modulo ] ,
+[ _pass , _pass , _pass , _pass , R.factorial] ,
+[ R.rotateUp , _pass , _pass , _pass , R.round ] ,
+[ R.lastX , _pass , _pass , _pass , R.sigma ] ,
 [ _pass , _pass , _pass , R.invert , _pass ]])
 
 
@@ -134,7 +134,3 @@ _actionTouche2nd = micropython.const(
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-
-
-
-
