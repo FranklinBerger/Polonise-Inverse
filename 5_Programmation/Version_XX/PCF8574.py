@@ -1,7 +1,7 @@
 # CONSTANTES & PARAMETRES
 import micropython
 DEBUG_MODE = micropython.const(True)
-PCF8574_ADDRESS = micropython.const(32)
+PCF8574_ADDRESS = micropython.const(56)
 
 doc="""
 Fichier: PCF8574.py
@@ -26,7 +26,7 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -49,14 +49,14 @@ class PCF8574 (object):
         """
         self.i2cBus = i2cBus
         self.pcfAadress = pcfAadress
-    
+
     def read (self):
         """
         Methode: read(self)
         Lis la valleur dans l'IO extender, renvoie sous forme de int
         """
         return self.i2cBus.readfrom(PCF8574_ADDRESS + self.pcfAadress, 1)[0]
-    
+
     def write (self, value):
         """
         Methode: write(self)
@@ -71,4 +71,3 @@ class PCF8574 (object):
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-
