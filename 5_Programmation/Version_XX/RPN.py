@@ -353,6 +353,33 @@ def root ():
     """
     _actOnXY( math.pow( get("Y") , (1/get("X")) ) )
 
+def e_pow_x ():
+    """
+    Fonction: e_pow_x ()
+    X = e ^ X
+    """
+    _setX( math.pow( math.e , get("X") ) )
+
+def ten_pow_x ():
+    """
+    Fonction: ten_pow_x ()
+    X = 10 ^ X
+    """
+    set("X" , "1e" + str(get("X")) )
+
+def log ():
+    """
+    Fonction: log ()
+    X = log10(X)
+    """
+    _setX( math.log10( get("X") ) )
+
+def ln ():
+    """
+    Fonction: log ()
+    X = ln(X)
+    """
+    _setX( math.log( get("X") ) )
 
 
 
