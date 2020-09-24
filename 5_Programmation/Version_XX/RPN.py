@@ -1,6 +1,6 @@
 # CONSTANTES & PARAMETRES
 import micropython
-DEBUG_MODE = micropython.const(True)
+DEBUG_MODE = micropython.const(False)
 
 doc="""
 Fichier: RPN.py
@@ -358,14 +358,14 @@ def e_pow_x ():
     Fonction: e_pow_x ()
     X = e ^ X
     """
-    _setX( math.pow( math.e , get("X") ) )
+    _setX(  )
 
 def ten_pow_x ():
     """
     Fonction: ten_pow_x ()
     X = 10 ^ X
     """
-    set("X" , "1e" + str(get("X")) )
+    set("X" , math.pow( 10 , get("X") ) )
 
 def log ():
     """

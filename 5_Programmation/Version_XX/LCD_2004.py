@@ -1,6 +1,6 @@
 # CONSTANTES & PARAMETRES
 import micropython
-DEBUG_MODE = micropython.const(True)
+DEBUG_MODE = micropython.const(False)
 
 doc="""
 Fichier: LCD_2004.py
@@ -29,7 +29,7 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -70,7 +70,7 @@ def init (RS, E, BL, PCF8574):
     _BL = BL
     #_BL_PWM = machine.PWM(_BL, freq=1000, duty=1023) if _BL != None else None
     _PCF_D = PCF8574
-    
+
     # Procedure d'initialisation selon datasheet
     _E.value(1)
     time.sleep_ms(100)
@@ -84,7 +84,7 @@ def init (RS, E, BL, PCF8574):
     _send(0, 0x10)
     _showDisplay()
     _send(0, 0x06)
-    
+
     # Vidage Ecrant => Pret a commencer
     clearDisplay()
 
@@ -99,7 +99,7 @@ def _send (RS, Datas):
     directe et du flanc descendant de E
     """
     global _RS, _E, _BL, _PCF_D#, _BL_PWM
-    
+
     # Envoi des donnes par I2C
     _PCF_D.write(Datas)
     # Application RS
@@ -110,7 +110,7 @@ def _send (RS, Datas):
     time.sleep_us(1)
     # Validation des informations (flanc descendant E)
     _E.value(0)
-    
+
 
 def _showDisplay (C = False, B = False):
     """
@@ -145,7 +145,7 @@ def setBacklight (value):
     """
     #global _BL_PWM
     #_BL_PWM.duty(int(value * 10.23))
-    
+
     global _BL
     # Value: False => BL allume, True => BL eteint
     _BL.value(not value)
@@ -166,7 +166,7 @@ def setBuffer (buffer):
     renvoie une erreur
     """
     global _LCD_buffer
-    
+
     if type(buffer) != dict or \
     len(buffer) != 4 or \
     len(buffer[1]) != 20 or \
@@ -240,14 +240,14 @@ def fetch ():
     """
     # On commence par effacer totalement l'ecrant
     clearDisplay()
-    
+
     # Puis on ecrit chaque char l'un apres l'autre
     # On doit faire dans l'ordre des lignes 1, 3, 2, 4 car
     # le curseur fait ce trajet (ref. au datasheet)
     for i in [1, 3, 2, 4]:
         for c in getBuffer()[i]:
             writeChar(c)
-    
+
 def setCursorPos (line, col):
     """
     Fonction: setCursorPos ()
@@ -276,16 +276,16 @@ def setCursorPos (line, col):
 # ajoutes (voir a partir de 0x8X) parce que j'avais la flemme
 CGROM = micropython.const(
 """\xFF□□□□□□□□□□□□□□□""" + # 0x0X
-"""□□□□□□□□□□□□□□□□""" + # 0x1X 
-""" !"#$%&'()*+,-./""" + # 0x2X 
-"""0123456789:;<=>?""" + # 0x3X 
-"""@ABCDEFGHIJKLMNO""" + # 0x4X 
+"""□□□□□□□□□□□□□□□□""" + # 0x1X
+""" !"#$%&'()*+,-./""" + # 0x2X
+"""0123456789:;<=>?""" + # 0x3X
+"""@ABCDEFGHIJKLMNO""" + # 0x4X
 """PQRSTUVWXYZ[¥]^_""" + # 0x5X
 """`abcdefghijklmno""" + # 0x6X
-"""pqrstuvwxyz{|}→←""" + # 0x7X
-"""□□□□□□□□□□□□□□□□‎‎""" + # 0x8X
-"""□□□□□□□□□□□□□□□□‎‎""" + # 0x9X
-"""□□□□□·□□□□□□□□□□""" + # 0xAX
+"""pqrstuvwxyz{|}□□""" + # 0x7X →←
+"""□□□□□□□□□□□□□□□□‎""" + # 0x8X
+"""□□□□□□□□□□□□□□□□‎""" + # 0x9X
+"""□□□\xFE□□□□□□□□□□□""" + # 0xAX
 """□□□□□□□□□□□□□□□□""" + # 0xBX
 """□□□□□□□□□□□□□□□□""" + # 0xCX
 """□□□□□□□□□□□□□□□□""" + # 0xDX
@@ -307,11 +307,9 @@ def _getCharCGROMadress (char):
         raise Exception("Caracter " + char + " inconnu ou invalide.")
     else:
         return index
-    
+
 
 """ ------ Algoritme de presentation ------ """
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-
-

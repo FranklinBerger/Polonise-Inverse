@@ -1,6 +1,5 @@
-# CONSTANTES & PARAMETRES
-import micropython
-DEBUG_MODE = micropython.const(True)
+# Parametres d'execution
+from CONSTANTES import *
 
 doc="""
 Fichier: main.py
@@ -8,7 +7,6 @@ Projet: Calculatrice Polonaise Inversse V0.5
 Verssion & Date: V1 15.08.2020
 
 Dependances:
-- PCF8574.py
 
 Description:
 
@@ -24,9 +22,10 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Augmentation de l'optimisation a la compilation
+import micropython
 micropython.opt_level(3)
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
+if DEBUG_MODE_MAIN: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -57,17 +56,27 @@ LCD_RPN.init()
 while True:
     # Ne fait quelque-chose que si une touche a ete pressee, sinon rien
     if Clavier_RPN.haveToAct():
-        # Decomenter pour voir les erreurs des actions
-        Clavier_RPN.exec()
 
-        # On fait une recuperation d'erreur ici car les fonctions de la RPN en on pas
-        try:
-            Clavier_RPN.exec()
-        except:
-            hasError = True
+        # Affiche les erreurs dans le REPL si en debug
+        if DEBUG_MODE_MAIN:
+            print("--- Actions")
+            try:
+                Clavier_RPN.exec()
+            except Exception as e:
+                hasError = True
+                print("ERREUR D'ACTION:\n" + str(e))
+            else:
+                hasError = False
+            LCD_RPN.showRPN(error = hasError)
         else:
-            hasError = False
-        # On affiche la RPN a l'ecrant
-        LCD_RPN.showRPN(error = hasError)
+            # On fait une recuperation d'erreur ici car les fonctions de la RPN en on pas
+            try:
+                Clavier_RPN.exec()
+            except:
+                hasError = True
+            else:
+                hasError = False
+            # On affiche la RPN a l'ecrant
+            LCD_RPN.showRPN(error = hasError)
     else:
         pass

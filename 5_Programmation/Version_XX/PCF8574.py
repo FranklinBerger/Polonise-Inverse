@@ -1,7 +1,10 @@
 # CONSTANTES & PARAMETRES
 import micropython
-DEBUG_MODE = micropython.const(True)
-PCF8574_ADDRESS = micropython.const(56)
+DEBUG_MODE = micropython.const(False)
+# Prototype personnel
+PCF8574_ADDRESS = micropython.const(32)
+# Verssion finale
+#PCF8574_ADDRESS = micropython.const(56)
 
 doc="""
 Fichier: PCF8574.py

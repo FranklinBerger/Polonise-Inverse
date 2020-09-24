@@ -1,6 +1,5 @@
-# CONSTANTES & PARAMETRES
-import micropython
-DEBUG_MODE = micropython.const(True)
+# Parametres d'execution
+from CONSTANTES import *
 
 doc="""
 Fichier: LCD_2004.py
@@ -26,7 +25,8 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+import micropython
+if DEBUG_MODE_LCD: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -61,7 +61,7 @@ LCD_2004.init(
 
 def init():
     create2ndChar()
-    
+
     # Ouverture sypmathique
     LCD_2004.writeLine("Calculatrice RPN") # Ligne 1
     LCD_2004.writeLine("Sleny Martinez")   # Ligne 2
@@ -69,8 +69,8 @@ def init():
     LCD_2004.writeLine("Loading", full = False) # Ligne 4 puis ...
     for i in range(20 - len("Loading")):
         LCD_2004.writeChar(".")
-        time.sleep_ms(200)
-    
+        time.sleep_ms(150)
+
     # Affichage 0 de la RPN
     showRPN()
 
@@ -97,7 +97,17 @@ def showRPN(error = False):
         LCD_2004.setLine(4, "X:ERROR")
     # Refresh l'ecrant
     LCD_2004.fetch()
-    
+
+    # Debug
+    if DEBUG_MODE_LCD:
+        print("""Affichage Pile:
+T: """ + str(pileRPN["T"])[:18] + """
+Z: """ + str(pileRPN["Z"])[:18] + """
+Y: """ + str(pileRPN["Y"])[:18] + """
+X: """ + str(pileRPN["X"])[:18] + """
+2nd: """ + str(Clavier_RPN.get2nd()) + """
+ERROR: """ + str(error) )
+
 def create2ndChar():
     LCD_2004._send(0, 0x40) # CGRAM caracter 1
     LCD_2004._send(1, 0b00011001) # ##..#
@@ -115,5 +125,3 @@ def create2ndChar():
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-
-

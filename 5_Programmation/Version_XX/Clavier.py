@@ -32,7 +32,7 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128) 
+if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -70,7 +70,7 @@ def init (col, row, delayFrame = 5, delayStep = 3):
     global _col, _row, _mem, _threadRun, _delayFrame, _delayStep, _mem_k
     _delayFrame = delayFrame
     _delayStep = delayStep
-    
+
     # Initialisation lignes
     index = 0
     row_mem = []
@@ -82,15 +82,17 @@ def init (col, row, delayFrame = 5, delayStep = 3):
     index = 0
     for c in col:
         # value = 1 : colonne desactivee
-        _col.append([ index, machine.Pin(c,mode=machine.Pin.OPEN_DRAIN,value=1) ])
+        # On met un pull-up car sur certains GPIO (notament 12 et 13), le courant de fuite
+        # de l'open-drain suffit à mettre le transistor en saturation
+        _col.append([ index, machine.Pin(c,mode=machine.Pin.OPEN_DRAIN,value=1,pull=machine.Pin.PULL_UP) ])
         #_mem.append(row_mem)
         index += 1
-    
+
     # Initialisation memoire pour anti-doublon
     # /!\ Si on fait [[0] * len(_row)] * len(_col), on se retrouve avec des sous-listes
     # liees entre elles (a tester pour voir le resultat)
     _mem = [[0] * len(_row) for _ in range(len(_col))]
-    
+
     # Lance le thread de lecture du clavier
     setThread(True)
 
@@ -110,7 +112,7 @@ def _threadClavier (arg=None):
     Thread de lecture en continu du clavier
     """
     global _col, _row, _threadRun, _delayFrame, _delayStep, _bufferKey
-    
+
     # Jusqu'a ce qu'on arete le thread
     while _threadRun:
         # Balayage Colonne
@@ -118,7 +120,7 @@ def _threadClavier (arg=None):
             # Activation colonne et stabilisation HW
             c[1].value(0)
             time.sleep_ms(_delayStep)
-            # Lecture lignes                
+            # Lecture lignes
             for r in _row:
                 #print("r: " + str(r) + " C: " + str(c) + " => " + str(_row_mem[c[0]][r[0]]))
                 r_val = r[1].value()
@@ -174,7 +176,7 @@ def readBuffer (nKey = None, remove = True):
     if remove:
         _bufferKey = _bufferKey[nKey if nKey != None else len(_bufferKey) :]
     return k
-    
+
 def clearBuffer ():
     """
     Fonction:clearBuffer ()
@@ -196,7 +198,3 @@ def any ():
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-
-
-
-

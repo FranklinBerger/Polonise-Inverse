@@ -1,6 +1,5 @@
-# CONSTANTES & PARAMETRES
-import micropython
-DEBUG_MODE = micropython.const(True)
+# Parametres d'execution
+from CONSTANTES import *
 
 doc=
 """
@@ -27,7 +26,8 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-micropython.alloc_emergency_exception_buf(128) if DEBUG_MODE
+import micropython
+if DEBUG_MODE : micropython.alloc_emergency_exception_buf(128) 
 
 # Imports bibliotheques interne
 import machine
@@ -55,4 +55,3 @@ def fonction ( param ):
 if __name__ == "__main__":
     # Affichage doc du fichier
     print(doc)
-

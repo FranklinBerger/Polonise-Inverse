@@ -1,6 +1,5 @@
-# CONSTANTES & PARAMETRES
-import micropython
-DEBUG_MODE = micropython.const(True)
+# Parametres d'execution
+from CONSTANTES import *
 
 doc="""
 Fichier: Clavier_RPN.py
@@ -30,7 +29,8 @@ Auteur·e:
 
 """ ------ Imports ------ """
 # Gestion des exceptions etendue en cas de debug
-if DEBUG_MODE: micropython.alloc_emergency_exception_buf(128)
+import micropython
+if DEBUG_MODE_CLAVIER: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
@@ -47,8 +47,12 @@ import Clavier
 _2nd = False
 
 # --- Initialisation Clavier
-pins_col_N = micropython.const( [12, 13, 14, 15, 16] )
-pins_row_N = micropython.const( [17, 18, 19, 21, 22, 23, 25] )
+# Prototype personnel
+pins_col_N = micropython.const( [17, 21, 14, 15, 16] )
+pins_row_N = micropython.const( [35, 18, 19, 34, 22, 23, 25] )
+# Verssion finale
+#pins_col_N = micropython.const( [12, 13, 14, 15, 16] )
+#pins_row_N = micropython.const( [17, 18, 19, 21, 22, 23, 25] )
 Clavier.init(pins_col_N, pins_row_N)
 
 
@@ -69,10 +73,12 @@ def exec ():
         if not _2nd:
             # On va chercher la fonction a la ligne / colonne de la touche
             _actionTouche[touche[0]][touche[1]]()
+            if DEBUG_MODE_CLAVIER: print(_actionTouche[touche[0]][touche[1]])
         else:
             # On fait la fonction et on desactive le 2nd
             _actionTouche2nd[touche[0]][touche[1]]()
             _2nd = False
+            if DEBUG_MODE_CLAVIER: print(_actionTouche2nd[touche[0]][touche[1]])
 
 def _2ndAct ():
     """
