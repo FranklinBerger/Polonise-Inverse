@@ -2,9 +2,9 @@
 import micropython
 DEBUG_MODE = micropython.const(False)
 # Prototype personnel
-PCF8574_ADDRESS = micropython.const(32)
+#PCF8574_ADDRESS = micropython.const(32)
 # Verssion finale
-#PCF8574_ADDRESS = micropython.const(56)
+PCF8574_ADDRESS = micropython.const(56)
 
 doc="""
 Fichier: PCF8574.py
