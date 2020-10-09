@@ -1,0 +1,1220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0043)http://math.pc.vh.free.fr/divers/hp/rpn.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <meta http-equiv="Content-Language" content="fr">
+    <title>Calculateurs HP</title>
+  </head>
+  <body bgcolor="#ffffcc">
+    <table style="width: 100%; height: 1311px;" border="0" cellpadding="5" cellspacing="8">
+      <tbody>
+        <tr>
+          <td style="width: 215px;" valign="middle" align="center" bgcolor="#ffffff" height="119"> <a href="http://math.pc.vh.free.fr/index.htm"><img style="border: 0px solid ; width: 32px; height: 32px;" src="./Explication système RPN_files/homes.png" alt="Accueil"></a><a href="http://math.pc.vh.free.fr/divers/index.htm"><img style="border: 0px solid ; width: 32px; height: 32px;" src="./Explication système RPN_files/up.png" alt="retour"></a><br>
+            <a href="http://math.pc.vh.free.fr/divers/hp/manuels.htm"><img style="border: 0px solid ; width: 32px; height: 32px;" alt="précédent" src="./Explication système RPN_files/prev.png"></a><a href="http://math.pc.vh.free.fr/divers/hp/prog.htm"><img style="border: 0px solid ; width: 32px; height: 32px;" alt="suivant" src="./Explication système RPN_files/next.png"></a>
+          </td>
+          <td colspan="1" style="vertical-align: middle; height: 119px; background-color: rgb(255, 255, 153); width: 1238px;">
+            <h1><a name="debut"></a>La notation polonaise inverse (RPN) </h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 215px;" valign="top" bgcolor="#ffff99" height="1500">
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/origines.htm">La genèse</a></h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/ancetres.htm">Les ancêtres</a></h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/classic_woodstock.htm">Séries <span style="font-style: italic;">Classic</span>
+                - <span style="font-style: italic;">Woodstock</span></a><br>
+            </h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/spice.htm">Série <span style="font-style: italic;">Spice</span></a><br>
+            </h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/coconut.htm">Série <span style="font-style: italic;">Coconut</span></a></h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/voyager.htm">Série <span style="font-style: italic;">Voyager</span></a></h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/pioneer.htm">Série <span style="font-style: italic;">Pioneer</span></a><br>
+            </h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/recents.htm">Modèles divers</a></h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/perspectives.htm">Perspectives</a><br>
+            </h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/manuels.htm">Les manuels</a></h3>
+            <h3>La notation RPN</h3>
+            <h4>&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#notation">Logique RPN</a></h4>
+            <h5>&nbsp;&nbsp;&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#enter">Touche <span style="font-family: Arial;">ENTER</span>&#8593;</a></h5>
+            <h4>&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#pile">Pile opérationnelle</a></h4>
+            <h5>&nbsp;&nbsp;&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#dupt">Duplication de "T"</a></h5>
+            <h5>&nbsp;&nbsp;&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#lastx">LAST<span style="font-style: italic;">x</span></a></h5>
+            <h5>&nbsp;&nbsp;&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#manip">Manipulations</a></h5>
+            <h4>&nbsp; <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#ex">Exemples</a></h4>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/prog.htm">La programmation</a><br>
+            </h3>
+            <h3> </h3>
+            <h3><a href="http://math.pc.vh.free.fr/divers/hp/liens.htm">Liens</a></h3>
+          </td>
+          <td style="width: 1238px;" valign="top" height="2000">Les
+            machines HP ne sont ni les seules, ni les premières <a name="back1"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note1">[<sup>1</sup>]</a> à utiliser la fameuse notation
+            polonaise inverse (RPN = <span style="font-style: italic;">Reverse
+              Polish Notation</span>). Mais elle reste indissociable de la
+            marque, qui l'a
+            généralisée et développée jusqu'à la perfection.<br>
+            <br>
+            Le manuel complémentaire "La solution de vos problèmes avec votre
+            calculateur Hewlett-Packard" commence par cette profession de foi :<br>
+            <p style="margin-left: 40px;">
+              "<span style="font-weight: bold; font-family: Arial;">ENTER</span><span style="font-style: italic; font-weight: bold; font-family: Arial;">
+              </span><span style="font-weight: bold;">&#8593;</span><br>
+              <span style="font-style: italic;">Cette touche est la clef de la
+                résolution aisée et sûre de vos problèmes. Elle est à la base de
+                la
+                logique polonaise inverse de votre calculateur Hewlett-Packard.
+                Logique
+                si simple, si puissante que, l'ayant utilisée une fois, vous ne
+                saurez
+                plus vous contenter d'une autre.</span>"</p>
+            <span style="font-weight: bold; font-style: italic;">Essayez ! </span>Si
+vous
+            n'avez pas de calculateur RPN HP sous la main (condoléances...),
+            vous pouvez quand même tester les manipulations proposées
+            ci-dessous.
+            Rendez-vous sur la <a href="http://math.pc.vh.free.fr/divers/hp/liens.htm">page de liens</a>, rubrique
+            "<a href="http://math.pc.vh.free.fr/divers/hp/liens.htm#sim">Émulateurs</a>"...<br>
+            <h2><a name="notation"></a>La logique RPN</h2>
+            La notation polonaise a été inventée en 1920 par le mathématicien <a href="http://www-history.mcs.st-andrews.ac.uk/Biographies/Lukasiewicz.html" target="_blank">Jan
+              &#321;ukasiewicz</a>. Il recherchait un système de codage des
+            expression
+            mathématiques dépourvu de parenthèses, mais néanmoins capable de
+            traiter toute formule sans ambiguïté. Dans cette notation, les
+            opérateurs <span style="font-style: italic;">précédaient </span>les
+            arguments <a name="back2"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note2">[<sup>2</sup>]</a> :<br>
+            <p style="margin-left: 40px;">
+              2 × (3 + 4)</p>
+            était codé<br>
+            <p style="margin-left: 40px;">× 2 + 3 4</p>
+            Vers la fin des années 50, avec l'apparition des ordinateurs, <a href="http://en.wikipedia.org/wiki/Charles_Leonard_Hamblin" target="_blank">Charles
+              L. Hamblin</a> s'intéresse à la version <span style="font-style: italic;">postixée</span>
+            de cette notation.
+            Elle est en effet particulièrement bien adaptée à la manière dont
+            les
+            processeurs traitent leurs opérandes. Dans cette notation, ceux-ci
+            sont
+            introduits en premier, et notre exemple ci-dessus devient<br>
+            <p style="margin-left: 40px;">
+              3 4 + 2 ×</p>
+            En 1972, à l'apparition du <a href="http://math.pc.vh.free.fr/divers/hp/ancetres.htm#hp35">HP-35</a>,
+            Hewlett-Packard adopte la
+            dénomination "notation polonaise inverse" en l'honneur de
+            &#321;ukasiewicz.<br>
+            <h3><a name="enter"></a>La touche <span style="font-family: Arial;">ENTER</span>&#8593;</h3>
+            Évidemment, il faut <span style="font-style: italic;">séparer</span>
+            le premier nombre introduit du deuxième. Sinon, dans l'exemple
+            précédent, comment distinguer la succession des deux opérandes 3 et
+            4
+            du nombre à deux chiffres 34 ? <br>
+            <br>
+            C'est le rôle de la touche <span style="font-family: Arial;">ENTER</span>&#8593;.
+            Notre exemple s'écrirait donc sur une machine HP :<br>
+            <p style="margin-left: 40px;">
+              3&nbsp; <span style="font-family: Arial;">ENTER</span>&#8593; 4 + 2 ×</p>
+            Faisons deux remarques :<br>
+            <ul>
+              <li>après avoir effectué 3&nbsp; <span style="font-family: Arial;">ENTER</span>&#8593;
+                4 +, dont le résultat s'affiche immédiatement, <span style="font-style: italic;">il
+                  n'est pas nécessaire </span>de rappuyer sur <span style="font-family: Arial;">ENTER</span>&#8593;.
+En
+                effet, la machine "sait" qu'il s'agit d'un calcul antérieur, et
+                non
+                du début d'un nombre introduit par l'utilisateur. Il en est de
+                même
+                pour toute fonction d'une ou deux variables : son application
+                sépare
+                automatiquement son résultat de l'entrée suivante, évitant de
+                retaper <span style="font-family: Arial;">ENTER</span>&#8593;. </li>
+              <li>même dans un exemple aussi simple, la notation RPN est plus
+                économe en frappes de touches que le calcul algébrique, qui
+                s'écrirait
+                2 × (3 + 4) =. Ce dernier exige 8 frappes au lieu de 6. Ce n'est
+                qu'un début. <span style="font-style: italic;"></span><span style="font-style: italic;"></span>
+                <p style="margin-left: 120px;"><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#debut"><img style="border: 0px solid ; width: 32px; height: 32px;" src="./Explication système RPN_files/up.png" alt="haut de page"></a></p>
+              </li>
+            </ul>
+            <h2><a name="pile"></a>La pile opérationnelle</h2>
+            Il ne s'agit pas seulement de
+            séparer les nombres. Après avoir tapé "3&nbsp; <span style="font-family: Arial;">ENTER</span>&#8593;
+            4", le 4 apparaît
+            à l'affichage. Où est passé le 3 ? Il est bien en réserve quelque
+            part.
+            La <span style="font-style: italic;">pile opérationnelle RPN </span>HP
+            "empile" les arguments selon le principe LIFO (<span style="font-style: italic;">Last
+              In, First Out</span>) : le premier à "sortir" est le dernier
+            entré. <br>
+            <br>
+            Notre 3 est donc dans le 2<sup>ème</sup> "étage" de la pile, dénommé
+            Y (le premier
+            niveau, X, étant celui qui est affiché). La pile opérationnelle HP
+            comporte 4 <a name="back3"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note3">[<sup>3</sup>]</a>
+            niveaux : X, Y, Z et T. Observons son
+            comportement dans l'exemple précédent :<br>
+            <br>
+            <table style="text-align: left; height: 194px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; width: 150px; text-align: right;">frappe
+                    :<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">3<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593;</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">4<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">+<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">2<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">7<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;">(affichage) </span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><span style="font-weight: bold; color: red;">3</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><span style="color: black;">4</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">7<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">14<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            Remarquons ce qui se passe à l'endroit du <span style="font-weight: bold; color: red;">3</span>
+            : après avoir tapé <span style="font-family: Arial;">ENTER</span>&#8593;,
+            la pile est "verrouillée" et le 4 "écrase"
+            le 3. Dans pratiquement tous les autres cas <a name="back4"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note4">[<sup>4</sup>]</a>, le
+            nombre nouvellement introduit "pousse" les autres d'un étage. (Si un
+            nombre était présent dans le registre T, il est perdu <a name="back5"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note5">[<sup>5</sup>]</a>.)<br>
+            <br>
+            Le calcul précédent aurait également pu être réalisé sous la forme
+            2×(3+4). En RPN on aurait noté<br>
+            <p style="margin-left: 40px;">2 <span style="font-family: Arial;">ENTER</span>&#8593;
+              3&nbsp; <span style="font-family: Arial;">ENTER</span>&#8593; 4 + ×</p>
+            ... et la pile se serait comportée ainsi :<br>
+            <br>
+            <table style="text-align: left; height: 194px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; width: 150px; text-align: right;">frappe
+                    :<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">2<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593;</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">3<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593;<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">4<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">+
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;">(affichage) </span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><span style="font-weight: bold; color: red;">2</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><span style="color: black;">3</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><span style="font-weight: bold; color: red;">3</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">7<br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">14<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            On note que cette seconde possibilité nécessite une pression de
+            touche
+            de plus. Elle utilise aussi un niveau de pile supplémentaire (Z). Il
+            y
+            a encore de la marge (avec T), mais on conçoit que les expression
+            les
+            plus complexes nécessitent un minimum de discernement pour ne pas
+            faire "déborder" la pile. Typiquement, elles doivent être calculées
+            "par l'intérieur", en commençant par les sous-expressions les plus
+            internes. Comme les modes d'emploi HP l'illustrent fort bien, c'est
+            l'ordre qui serait employé dans le cas d'un calcul "manuel".
+            <h3><a name="dupt"></a>Duplication de "T"</h3>
+            Comme
+            on le voit dans les deux exemples ci-dessus, une opération (+, ×...)
+            combine les contenus de X et Y et place le résultat dans X. Cela
+            fait
+            "redescendre" Z dans Y et T dans Z. Mais HP a prévu une
+            caractéristique
+            judicieuse du registre T :<br>
+            <br>
+            <span style="font-style: italic;">Lorsque la pile redescend, le
+              contenu de T reste inchangé.<br>
+              <br>
+            </span>Dans ce cas, l'ancien "T" se retrouve donc dans Z <span style="font-style: italic;">et
+              </span>dans
+            T : il est "dupliqué". Cette caractéristique anodine a des
+            applications
+            pratiques. Les exemples suivants sont adaptés du manuel du <a href="http://math.pc.vh.free.fr/divers/hp/voyager.htm#hp15">HP-15C</a>
+            :<br>
+            <h4><a name="prog_geom"></a>Progressions géométriques</h4>
+            "<span style="font-style: italic;">Un bactériologiste étudie un
+              certain
+              micro-organisme dont la population croît de 15% par jour (facteur
+              de
+              croissance égal à 1,15). S'il commence avec un échantillon de 1000
+              quelle sera la population à la fin de chaque journée pendant les 4
+              premier jours ?</span>"<br>
+            <br>
+            <table style="text-align: left; height: 194px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">1.15<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593;</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">ENTER&#8593;
+                    </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">ENTER&#8593;<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">1000<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">1,15
+                    </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">1,15
+                    </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">1,15
+                    </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;"></span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1,15<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">1,15
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1.000<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1.150<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1.322,50<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1.520,8750<br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">1749,0063<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h4><a name="const"></a>Calculs avec constante</h4>
+            "<span style="font-style: italic;">Parmi les étoiles les plus
+              proches
+              de la Terre, Rigel Kentaurus et Sirius se situent respectivement à
+              4,3
+              et 8,7 années-lumière. Utilisez la vitesse de la lumière (3</span>×<span style="font-style: italic;">10<sup>8</sup> m/s ou 9,5</span>×<span style="font-style: italic;">10<sup>15</sup> m/an) pour calculer
+              leurs éloignements en mètres</span>."<br>
+            <br>
+            <table style="text-align: left; height: 194px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">9.5<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; font-family: Arial;">EEX</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">15
+                    </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593;<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593; </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593; </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">4,3</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                  <td style="vertical-align: top; text-align: center; width: 100px;"><span style="font-family: Arial;">CL</span><span style="font-style: italic;">x</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; width: 100px;">8,7<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">9,5
+                    &nbsp; 15 </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">9,5
+                    &nbsp; 15 </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">9,5
+                    &nbsp; 15 </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;"></span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 00 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">9,5
+                    &nbsp; 15</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,1&nbsp;&nbsp;
+                    16<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: red;">0,0</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">8,7<br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">8,3&nbsp;&nbsp;
+                    16<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            Ce dernier exemple tire parti d'une caractéristique de la touche
+            d'effacement (CL<span style="font-style: italic;">x</span>). On le
+            voit colonne 9 (<span style="font-weight: bold; color: red;">0,0</span>),
+            celle-ci, à l'instar de <span style="font-family: Arial;">ENTER</span>&#8593;,
+            verrouille la pile (<span style="font-style: italic;">cf.</span> <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note4">[<sup>4</sup>]</a>), de sorte que le multiplicateur
+            constant dans Y, Z et T reste inchangé.<br>
+            <br>
+            En fait, l'exemple original du manuel du <a href="http://math.pc.vh.free.fr/divers/hp/voyager.htm#hp15">HP-15C</a>
+            n'utilisait pas la duplication de T, mais le <span style="font-style: italic;">registre
+              LASTx</span>.<br>
+            <h3><a name="lastx"></a>Registre LAST<span style="font-style: italic;">x</span></h3>
+            Le registre LAST<span style="font-style: italic;">x</span>
+            mémorise la dernière valeur du registre X de la pile avant
+            l'exécution
+            d'une fonction, qu'elle soit d'une ou de deux variables. <br>
+            <br>
+            Cela offre une autre possibilité pour les calculs avec constante :
+            voici comment l'<a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#const">exemple précédent</a> était
+            présenté dans le manuel du HP-15C :<br>
+            <br>
+            <table style="text-align: left; height: 194px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">4.3<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">ENTER</span>&#8593;</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">9.5</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">EEX</span><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">15</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                  <td style="vertical-align: top; text-align: center; width: 100px;">8,7<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; width: 100px;"><span style="font-family: Arial;">LAST</span><span style="font-style: italic;">x</span><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold; width: 75px;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;"><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,1
+                    &nbsp; 16</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">
+                    <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,3
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,3</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,1
+                    &nbsp; 16</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">8,7</td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">4,1
+                    &nbsp; 16 </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;"></span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4.3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); color: red;"><span style="font-weight: bold;">4,3</span> </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); color: black;">9,5
+                    &nbsp; 00</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15 </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4,1&nbsp;&nbsp;
+                    16<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); color: black;">8,7</td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9,5
+                    &nbsp; 15<br>
+                  </td>
+                  <td style="vertical-align: top; background-color: rgb(255, 255, 153); text-align: center;">8,3&nbsp;&nbsp;
+                    16<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table style="text-align: left; height: 45px; width: 1059px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; height: 10px; width: 75px;"><span style="font-weight: bold;">LAST<span style="font-style: italic;">x</span></span><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);">9,5&nbsp;&nbsp;
+                    15<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);">9,5&nbsp;&nbsp;
+                    15</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center; background-color: rgb(255, 255, 153);">9,5&nbsp;&nbsp;
+                    15</td>
+                  <td style="vertical-align: top; text-align: center; width: 100px; background-color: rgb(255, 255, 153);">9,5&nbsp;&nbsp;
+                    15<span style="font-style: italic;"></span> </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            Cette fois la constante est introduite en dernier, et reste dans le
+            registre LAST<span style="font-style: italic;">x</span>. <br>
+            <br>
+            Mais ce registre supplémentaire a aussi un autre emploi évident : la
+            correction d'erreurs. Pour annuler une opération appliquée à un
+            argument incorrect, il suffit de rappeler LAST<span style="font-style: italic;">x</span>
+            et d'effectuer la fonction inverse. Par exemple :<br>
+            <br>
+            <table style="text-align: left; height: 191px; width: 304px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; width: 150px; text-align: center;">frappe
+                    :<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">affichage
+                    :<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;"><span style="font-weight: normal;">287</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">287<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;"><span style="font-family: Arial; font-weight: normal;">ENTER</span><span style="font-weight: normal;">&#8593;</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">287,0000<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;"><span style="font-weight: normal; color: red;">12.9</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">12,9<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;"><span style="font-weight: normal;">÷ </span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">22,2481<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <span style="color: red;"><span style="color: black;">Oops ! </span>12.9</span>
+            était faux, c'était 13.9 qu'il fallait écrire :<br>
+            <br>
+            <table style="text-align: left; height: 190px; width: 304px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; width: 150px; text-align: center;">frappe
+                    :<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">affichage
+                    :<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;"><span style="font-weight: normal;"><span style="font-family: Arial;">LAST</span><span style="font-style: italic;">x</span></span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">12,9000<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: center;">× </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">287,0000<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;">
+                    <span style="font-weight: normal;">13.9</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">13,9<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; font-weight: bold; text-align: center;"><span style="font-weight: normal;">÷ </span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">20,6475<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br style="color: black;">
+            <span style="color: black;">On a simplement rappelé LAST<span style="font-style: italic;">x</span>
+              puis effectué la fonction inverse (</span>×<span style="color: black;"></span><span style="color: black;">) pour revenir à l'état antérieur.</span>
+            <h3><a name="manip"></a>Manipulations de la pile</h3>
+            La pile RPN ne se contente pas
+            de mémoriser statiquement les résultats intermédiaires. Elle peut
+            être
+            réordonnée à volonté grâce aux opérations de manipulation suivantes
+            :<br>
+            <h4><a name="swap"></a>Touche <span style="font-style: italic;">x</span>&#8644;<span style="font-style: italic;">y</span></h4>
+            Cette
+            touche effectue un échange (transposition) des registres X et Y.
+            Elle
+            est bien utile pour remettre les arguments dans l'ordre avant une
+            opération non commutative (<span style="font-weight: normal;">&#8722; ou ÷</span>).
+            Son effet se décrit ainsi, en supposant que la pile contienne les
+            nombres 1, 2, 3 et 4 :<br>
+            <br>
+            <table style="text-align: left; height: 160px; width: 134px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;"><br>
+                  </td>
+                  <td colspan="2" rowspan="1" style="vertical-align: top; width: 100px; text-align: center;"><span style="font-style: italic;">x&#8644;y</span><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;"></span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: black;"><span style="font-weight: normal;">3</span> </td>
+                </tr>
+              </tbody>
+            </table>
+            <h4><a name="rdown"></a>Touche <span style="font-family: Arial;">R</span>&#8595;</h4>
+            Cette touche "<span style="font-style: italic;">Rotate down</span>"
+            permet "d'aller chercher" tout nombre contenu dans la pile, ou
+            simplement d'en vérifier le contenu. Elle fait défiler celle-ci de
+            bas
+            en haut (permutation circulaire) :<br>
+            <br>
+            <table style="text-align: left; height: 159px; width: 134px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;"><br>
+                  </td>
+                  <td colspan="2" rowspan="1" style="vertical-align: top; width: 100px; text-align: center;"><span style="font-family: Arial;">R</span>&#8595; </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">1<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">2</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;"></span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">4<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); font-weight: bold; color: black;"><span style="font-weight: normal;">3</span> </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            Bien sûr, au bout de 4 appuis sur la touche <span style="font-family: Arial;">R</span>&#8595;,
+            la pile est rétablie
+            dans son état initial. Cependant, pour plus de souplesse, plusieurs
+            calculateurs HP proposent la fonction <span style="font-family: Arial;">R</span>&#8593;,
+            qui effectue la permutation
+            inverse. Elle est généralement située en fonction secondaire de <span style="font-family: Arial;">R</span>&#8595;.<br>
+            <br>
+            Les touches <span style="font-style: italic;">x&#8644;y</span> et <span style="font-family: Arial;">R</span>&#8595;
+            permettent d'effectuer <span style="font-style: italic;">toute </span>permutation
+            <a name="back6"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#note6">[<sup>6</sup>]</a> des 4
+            niveaux de la pile. On peut donc se passer, dans pratiquement tous
+            les calculs
+            manuels, de la mise en mémoire des résultats intermédiaires.<span style="font-style: italic;"></span><span style="font-style: italic;"></span>
+            <p style="margin-left: 120px;"><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#debut"><img style="border: 0px solid ; width: 32px; height: 32px;" src="./Explication système RPN_files/up.png" alt="haut de page"></a></p>
+            <h2><a name="ex"></a>Exemples</h2>
+            L'exemple suivant est récurrent dans les modes d'emploi HP (ici, le
+            <a href="http://math.pc.vh.free.fr/divers/hp/voyager.htm#hp15">HP-15C</a>). Il s'agit de calculer
+            l'expression :<br>
+            <p style="margin-left: 40px;"><img style="width: 489px; height: 79px;" alt="" src="./Explication système RPN_files/formule.png"></p>
+            Une solution possible est donnée dans les manuels. Elle tire parti
+            de LAST<span style="font-style: italic;">x</span> pour éviter
+            d'introduire deux fois 8,33 :<br>
+            <p style="margin-left: 40px;">4&nbsp;<span style="font-family: Arial;">ENTER</span><span style="font-weight: normal;">&#8593; 5.2 </span><span style="font-weight: normal;">&#8722;</span><span style="font-weight: normal;"> 8,33 </span>×<span style="font-weight: normal;">
+                <span style="font-family: Arial;">LAST</span><span style="font-style: italic;">x</span>
+                7,46 </span><span style="font-weight: normal;">&#8722;</span><span style="font-weight: normal;">
+                0,32 </span>×<span style="font-weight: normal;"> </span><span style="font-weight: normal;">÷</span><span style="font-weight: normal;">
+                3,15&nbsp;</span><span style="font-family: Arial;">ENTER</span><span style="font-weight: normal;">&#8593; 2,75 </span><span style="font-weight: normal;">&#8722;</span><span style="font-weight: normal;"> 4,3 </span>×<span style="font-weight: normal;">
+                1,71&nbsp;</span><span style="font-family: Arial;">ENTER</span><span style="font-weight: normal;">&#8593; 2,01 </span>×<span style="font-weight: normal;">
+              </span><span style="font-weight: normal;">&#8722;</span><span style="font-weight: normal;">
+              </span><span style="font-weight: normal;">÷</span><span style="font-weight: normal;">
+                &#8730;<br>
+              </span></p>
+            Comparez avec <span style="font-style: italic;">votre</span>
+            calculatrice -- si ce n'est pas une HP...<br>
+            <h3><a name="horner"></a>Méthode de Horner</h3>
+            La méthode de Horner consiste à réécrire un polynôme pour le
+            calculer
+            avec uniquement des multiplications. Elle évite tout recours à la
+            fonction puissance. Par exemple (selon le manuel du <a href="http://math.pc.vh.free.fr/divers/hp/coconut.htm#hp41cx">HP-41CX</a>)
+            :<br>
+            <br>
+            <table style="text-align: left; margin-left: 40px;" border="0" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;">
+                    <p><span style="font-style: italic;">x</span><sup>4</sup><span style="font-weight: normal;"> &#8722;</span> 2<span style="font-style: italic;">x</span><sup>3</sup>
+                      + 5<span style="font-style: italic;">x</span></p>
+                  </td>
+                  <td style="vertical-align: top; text-align: center;">
+                    <p>&nbsp;=&nbsp; <br>
+                    </p>
+                  </td>
+                  <td style="vertical-align: top; text-align: left;">
+                    <p>(<span style="font-style: italic;">x</span><span style="font-style: italic;"></span><sup>3</sup><span style="font-weight: normal;"> &#8722; </span>2<span style="font-style: italic;">x</span><span style="font-style: italic;"></span><sup>2</sup> + 5)<span style="font-style: italic;">x</span></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;">
+                    <p><br>
+                    </p>
+                  </td>
+                  <td style="vertical-align: top; text-align: center;">
+                    <p>=</p>
+                  </td>
+                  <td style="vertical-align: top; text-align: left;">
+                    <p>((<span style="font-style: italic;">x</span><sup>2</sup><span style="font-weight: normal;"> &#8722; </span>2<span style="font-style: italic;">x</span>)<span style="font-style: italic;">x </span>+ 5)<span style="font-style: italic;">x</span></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;">
+                    <p><br>
+                    </p>
+                  </td>
+                  <td style="vertical-align: top; text-align: center;">
+                    <p>=</p>
+                  </td>
+                  <td style="vertical-align: top; text-align: left;">
+                    <p>(((<span style="font-style: italic;">x</span><span style="font-weight: normal;">
+                        &#8722; </span>2)<span style="font-style: italic;">x</span>)<span style="font-style: italic;">x </span>+ 5)<span style="font-style: italic;">x</span></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            Ce principe s'adapte remarquablement à la pile RPN. On la remplit
+            avec la valeur <span style="font-style: italic;">x</span> en
+            laquelle on souhaite calculer le polynôme. Ensuite, la <a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#dupt">duplication
+              de T</a> fait le reste, et évite toute mise en mémoire ou appel à
+            la fonction puissance.<br>
+            <br>
+            Calculons le polynôme précédent en <span style="font-style: italic;">x</span>
+            = 3. On commence à remplir la pile de 3 (3 <span style="font-family: Arial;">ENTER</span>&#8593;<span style="font-family: Arial;">ENTER</span>&#8593;<span style="font-family: Arial;">ENTER</span>&#8593;).
+            On continue ainsi :<br>
+            <br>
+            <table style="text-align: left; height: 194px;" border="1" cellpadding="2" cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: right;"><br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">[...]<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">2</td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;"><span style="font-weight: normal;">&#8722;</span> </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×<br>
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">5
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">+
+                  </td>
+                  <td style="vertical-align: top; width: 100px; text-align: center;">×
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">T<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); width: 100px;">3<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Z<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;">Y<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">3<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top; text-align: right; font-weight: bold;"><span style="font-weight: normal;"></span>X<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);"><span style="color: red; font-weight: bold;">3</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); color: black;">2<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); color: black;">1<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153); color: black;">3<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">9<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">5<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">14<br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 153);">42<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            La généralisation est immédiate, quel que soit le degré du polynôme.<br>
+            <p style="margin-left: 120px;"><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#debut"><img style="border: 0px solid ; width: 32px; height: 32px;" src="./Explication système RPN_files/up.png" alt="haut de page"></a></p>
+            <hr style="width: 100%; height: 2px;">
+            <h3>Notes</h3>
+            <p><a name="note1" href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#back1">[<sup>1</sup>]</a>&nbsp; En 1963,
+              la <a href="http://www.oldcalculatormuseum.com/friden130.html" target="_blank">Friden
+                EC-130</a> précède le <a href="http://math.pc.vh.free.fr/divers/hp/ancetres.htm#hp9100">HP-9100</a>
+              de 5 ans ! Il est vrai qu'elle n'est pas programmable.<sup></sup><br>
+            </p>
+            <p><a name="note2"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#back2">[<sup>2</sup>]</a>&nbsp; On
+              parle de notation <span style="font-style: italic;">préfixée</span>.<br>
+            </p>
+            <p><a name="note3"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#back3">[<sup>3</sup>]</a>&nbsp; 3
+              seulement sur le <a href="http://math.pc.vh.free.fr/divers/hp/ancetres.htm#hp9100">HP-9100</a>.<br>
+            </p>
+            <p><a name="note4"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#back4">[<sup>4</sup>]</a>&nbsp; On
+              parle de fonction <span style="font-style: italic;">autorisant</span>
+              -- cas général -- ou <span style="font-style: italic;">interdisant</span>
+              les mouvements de la pile. Ce dernier cas, exceptionnel, ne
+              concerne que les fonctions <span style="font-family: Arial;">ENTER</span>&#8593;,
+              <span style="font-family: Arial;">CL</span><span style="font-style: italic;">x</span>
+              (effacement), &#931;+ et &#931;&#8722;
+              (mise en mémoire et effacement des données statistiques). Ce
+              comportement est resté remarquablement cohérent à travers les
+              différentes générations de calculateurs HP.<br>
+            </p>
+            <p><a name="note5"></a><a href="http://math.pc.vh.free.fr/divers/hp/back5">[<sup>5</sup>]</a>&nbsp;
+              Si la valeur présente dans T avait encore de l'importance, cette
+              situation dénoterait assurément une mauvaise utilisation de la
+              pile RPN.</p>
+            <p><a name="note6"></a><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#back6">[<sup>6</sup>]</a>&nbsp;
+              Matheux, réveillez-vous ! Une transposition et un cycle d'ordre <span style="font-style: italic;">n</span> <span style="font-style: italic;">engendrent
+                </span>le groupe symétrique &#120086;<sub><span style="font-style: italic;">n</span></sub>
+              entier !</p>
+            <span style="font-style: italic;"></span><span style="font-style: italic;"></span>
+            <p style="margin-left: 120px;"><a href="http://math.pc.vh.free.fr/divers/hp/rpn.htm#debut"><img src="./Explication système RPN_files/up.png" alt="haut de page" width="32" border="0" height="32"></a></p>
+            <hr> </td>
+        </tr>
+      </tbody>
+    </table>
+  
+
+</body></html>

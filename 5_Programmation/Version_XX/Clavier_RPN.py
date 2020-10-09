@@ -53,7 +53,7 @@ _2nd = False
 # Verssion finale
 pins_col_N = micropython.const( [12, 13, 14, 15, 16] )
 pins_row_N = micropython.const( [17, 18, 19, 21, 22, 23, 25] )
-Clavier.init(pins_col_N, pins_row_N)
+Clavier.init(pins_col_N, pins_row_N, delayStep = 200, delayFrame = 300)
 
 
 " --- Systeme --- "
