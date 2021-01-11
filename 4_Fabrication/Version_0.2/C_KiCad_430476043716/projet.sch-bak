@@ -3,13 +3,13 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title "Calculatrice Polonaise Inversse"
-Date ""
+Date "2020-08-26"
 Rev ""
-Comp "Pour ETML 2020"
-Comment1 "Sleny Martinez"
-Comment2 ""
+Comp "ETML - Ecole des Métiers"
+Comment1 "Pré-apprentissages 2020-2021"
+Comment2 "Sleny Martinez"
 Comment3 ""
 Comment4 ""
 $EndDescr
@@ -7089,4 +7089,10 @@ F 3 "" H 6125 2950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6125 2825 6125 2950
+$Sheet
+S 5990 3555 1165 450 
+U 5FC15146
+F0 "Sheet5FC15145" 50
+F1 "file5FC15145.sch" 50
+$EndSheet
 $EndSCHEMATC

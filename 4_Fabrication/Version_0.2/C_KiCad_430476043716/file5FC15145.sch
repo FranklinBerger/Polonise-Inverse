@@ -1,0 +1,240 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L archive:power_+VDC #PWR?
+U 1 1 5FC192D9
+P 1840 2190
+F 0 "#PWR?" H 1840 2090 50  0001 C CNN
+F 1 "+VDC" H 1840 2465 50  0000 C CNN
+F 2 "" H 1840 2190 50  0001 C CNN
+F 3 "" H 1840 2190 50  0001 C CNN
+	1    1840 2190
+	1    0    0    -1  
+$EndComp
+Text Notes 1740 1615 0    50   ~ 0
+Régulateur\nBuck-Boost 3V3\n
+Wire Wire Line
+	1840 2190 1840 2240
+Connection ~ 1840 2240
+$Comp
+L projet-rescue:TPS63001-Regulator_Switching U?
+U 1 1 5FC192E3
+P 2665 2440
+F 0 "U?" H 2665 3065 50  0000 C CNN
+F 1 "TPS63001DRCR" H 2665 2990 50  0000 C CNN
+F 2 "Package_SON:Texas_DRC0010J_ThermalVias" H 3515 1890 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tps63000.pdf" H 2365 2990 50  0001 C CNN
+F 4 "296-19643-1-ND" H 2665 2440 50  0001 C CNN "N° Digikey"
+	1    2665 2440
+	1    0    0    -1  
+$EndComp
+$Comp
+L projet-rescue:L-Device L?
+U 1 1 5FC192EA
+P 2665 1715
+F 0 "L?" V 2855 1715 50  0000 C CNN
+F 1 "2.2[μH]" V 2764 1715 50  0000 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-24xx_HandSoldering" H 2665 1715 50  0001 C CNN
+F 3 "~" H 2665 1715 50  0001 C CNN
+F 4 "587-3544-1-ND" H 2665 1715 50  0001 C CNN "N° Digikey"
+	1    2665 1715
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2815 1715 3115 1715
+Wire Wire Line
+	3115 1715 3115 2040
+Wire Wire Line
+	3115 2040 3065 2040
+Wire Wire Line
+	2515 1715 2215 1715
+Wire Wire Line
+	2215 1715 2215 2040
+Wire Wire Line
+	2215 2040 2265 2040
+Wire Wire Line
+	3065 2240 3140 2240
+Wire Wire Line
+	3140 2240 3140 2440
+Wire Wire Line
+	3140 2440 3065 2440
+$Comp
+L archive:Device_CP1 C?
+U 1 1 5FC192FB
+P 3390 2590
+F 0 "C?" H 3390 2490 50  0000 L CNN
+F 1 "33[μF]" H 3390 2665 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3390 2590 50  0001 C CNN
+F 3 "~" H 3390 2590 50  0001 C CNN
+F 4 "33059508387" H 3390 2590 50  0001 C CNN "N° Fournisseur"
+F 5 "399-4719-1-ND" H 3390 2590 50  0001 C CNN "N° Digikey"
+	1    3390 2590
+	1    0    0    -1  
+$EndComp
+$Comp
+L archive:power_GND #PWR?
+U 1 1 5FC19301
+P 3390 3165
+F 0 "#PWR?" H 3390 2915 50  0001 C CNN
+F 1 "GND" H 3395 2992 50  0000 C CNN
+F 2 "" H 3390 3165 50  0001 C CNN
+F 3 "" H 3390 3165 50  0001 C CNN
+	1    3390 3165
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3390 2740 3390 3165
+Wire Wire Line
+	3140 2240 3390 2240
+Wire Wire Line
+	3390 2240 3390 2440
+Connection ~ 3140 2240
+$Comp
+L archive:Device_CP1 C?
+U 1 1 5FC1930D
+P 1840 2515
+F 0 "C?" H 1840 2415 50  0000 L CNN
+F 1 "10[μF]" H 1840 2590 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 1840 2515 50  0001 C CNN
+F 3 "~" H 1840 2515 50  0001 C CNN
+F 4 "33059508387" H 1840 2515 50  0001 C CNN "N° Fournisseur"
+F 5 "399-4788-1-ND" H 1840 2515 50  0001 C CNN "N° Digikey"
+	1    1840 2515
+	1    0    0    -1  
+$EndComp
+$Comp
+L archive:power_GND #PWR?
+U 1 1 5FC19313
+P 1840 3165
+F 0 "#PWR?" H 1840 2915 50  0001 C CNN
+F 1 "GND" H 1845 2992 50  0000 C CNN
+F 2 "" H 1840 3165 50  0001 C CNN
+F 3 "" H 1840 3165 50  0001 C CNN
+	1    1840 3165
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2265 2240 2190 2240
+Wire Wire Line
+	2190 2240 2190 2340
+Wire Wire Line
+	2190 2640 2265 2640
+Wire Wire Line
+	2265 2440 2190 2440
+Connection ~ 2190 2440
+Wire Wire Line
+	2190 2440 2190 2640
+Wire Wire Line
+	2190 2340 2265 2340
+Connection ~ 2190 2340
+Wire Wire Line
+	2190 2340 2190 2440
+$Comp
+L projet-rescue:GND-power #PWR?
+U 1 1 5FC19322
+P 2665 3165
+F 0 "#PWR?" H 2665 2915 50  0001 C CNN
+F 1 "GND" H 2670 2992 50  0000 C CNN
+F 2 "" H 2665 3165 50  0001 C CNN
+F 3 "" H 2665 3165 50  0001 C CNN
+	1    2665 3165
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2665 3165 2665 3090
+Wire Wire Line
+	2565 3040 2565 3090
+Wire Wire Line
+	2565 3090 2665 3090
+Connection ~ 2665 3090
+Wire Wire Line
+	2665 3090 2665 3040
+Wire Wire Line
+	1840 2365 1840 2240
+Connection ~ 2190 2240
+$Comp
+L projet-rescue:+3V3-power #PWR?
+U 1 1 5FC1932F
+P 3915 2240
+F 0 "#PWR?" H 3915 2090 50  0001 C CNN
+F 1 "+3V3" V 3930 2368 50  0000 L CNN
+F 2 "" H 3915 2240 50  0001 C CNN
+F 3 "" H 3915 2240 50  0001 C CNN
+	1    3915 2240
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3915 2240 3765 2240
+Connection ~ 3390 2240
+Wire Wire Line
+	1840 2665 1840 3165
+Wire Wire Line
+	1840 2240 2190 2240
+Wire Wire Line
+	1615 2240 1840 2240
+Wire Notes Line
+	1715 1440 4265 1440
+Wire Notes Line
+	4265 1440 4265 3390
+Wire Notes Line
+	4265 3390 1715 3390
+$Comp
+L archive:Device_LED D?
+U 1 1 5FC1933F
+P 3765 2540
+F 0 "D?" V 3815 2740 50  0000 R CNN
+F 1 "Rouge SMD" V 3740 3015 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_ReverseMount_Hole1.8x2.4mm" H 3765 2540 50  0001 C CNN
+F 3 "~" H 3765 2540 50  0001 C CNN
+F 4 "32828059657" H 3765 2540 50  0001 C CNN "N° Fournisseur"
+F 5 "754-1158-1-ND" H 3765 2540 50  0001 C CNN "N° Digikey"
+	1    3765 2540
+	0    1    -1   0   
+$EndComp
+$Comp
+L archive:Device_R R?
+U 1 1 5FC19347
+P 3765 2890
+F 0 "R?" H 3615 2965 50  0000 L CNN
+F 1 "330[Ω]" H 3440 2890 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 3695 2890 50  0001 C CNN
+F 3 "~" H 3765 2890 50  0001 C CNN
+F 4 "32859526036" H 3765 2890 50  0001 C CNN "N° Fournisseur"
+F 5 "311-330FRCT-ND" H 3765 2890 50  0001 C CNN "N° Digikey"
+	1    3765 2890
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3765 2740 3765 2690
+Wire Wire Line
+	3765 2390 3765 2240
+Connection ~ 3765 2240
+Wire Wire Line
+	3765 2240 3390 2240
+$Comp
+L archive:power_GND #PWR?
+U 1 1 5FC19351
+P 3765 3165
+F 0 "#PWR?" H 3765 2915 50  0001 C CNN
+F 1 "GND" H 3770 2992 50  0000 C CNN
+F 2 "" H 3765 3165 50  0001 C CNN
+F 3 "" H 3765 3165 50  0001 C CNN
+	1    3765 3165
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3765 3040 3765 3165
+$EndSCHEMATC
