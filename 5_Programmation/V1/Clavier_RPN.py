@@ -53,7 +53,7 @@ _2nd = False
 # Verssion finale
 pins_col_N = micropython.const( [12, 13, 14, 15, 16] )
 pins_row_N = micropython.const( [17, 18, 19, 21, 22, 23, 25] )
-Clavier.init(pins_col_N, pins_row_N, delayStep = 200, delayFrame = 300)
+Clavier.init(pins_col_N, pins_row_N)
 
 
 " --- Systeme --- "
@@ -76,8 +76,8 @@ def exec ():
             if DEBUG_MODE_CLAVIER: print(_actionTouche[touche[0]][touche[1]])
         else:
             # On fait la fonction et on desactive le 2nd
-            _actionTouche2nd[touche[0]][touche[1]]()
             _2nd = False
+            _actionTouche2nd[touche[0]][touche[1]]()
             if DEBUG_MODE_CLAVIER: print(_actionTouche2nd[touche[0]][touche[1]])
 
 def _2ndAct ():
@@ -118,8 +118,8 @@ def haveToAct ():
 # Chaque touche va appeler une fonction / methode
 # La touche 2nd va faire passer la methode de la table _actionTouche a la table _actionTouche2nd
 _actionTouche = micropython.const(
-[[ _2ndAct , _pass , _pass , _pass , R.clear ] ,
-[ _pass , _pass , _pass , R.ten_pow_x , R.e_pow_x ] ,
+[[ _2ndAct , lambda: R.writeX("0b") , lambda: R.writeX("0x") , _pass , R.clear ] ,
+[ R.sin , R.cos , R.tan , R.ten_pow_x , R.e_pow_x ] ,
 [ lambda: R.writeX("e") , R.pi , R.square , R.power_to, R.divide ] ,
 [ _pass , lambda: R.writeX("7") , lambda: R.writeX("8") , lambda: R.writeX("9") , R.multiply ] ,
 [ R.rotateDown , lambda: R.writeX("4") , lambda: R.writeX("5") , lambda: R.writeX("6") , R.subtract ] ,
@@ -127,13 +127,13 @@ _actionTouche = micropython.const(
 [ R.delX , lambda: R.writeX("0") , lambda: R.writeX(".") , R.opposite , R.shiftUp ]])
 
 _actionTouche2nd = micropython.const(
-[[ _2ndAct , _pass , _pass , _pass , _pass ] ,
-[ _pass , _pass , _pass , R.log , R.ln ] ,
+[[ _2ndAct , R.toBin , R.toHex , R.toDec , R.hack ] ,
+[ R.arcsin , R.arccos , R.arctan, R.log , R.ln ] ,
 [ lambda: R.writeX("e-") , R.e , R.square_root , R.root , R.modulo ] ,
-[ _pass , _pass , _pass , _pass , R.factorial] ,
-[ R.rotateUp , _pass , _pass , _pass , R.round ] ,
+[ _pass , lambda:R.writeX("A") , lambda:R.writeX("B") , lambda:R.writeX("C") , R.factorial] ,
+[ R.rotateUp , lambda:R.writeX("D") , lambda:R.writeX("E") , lambda:R.writeX("F") , R.round ] ,
 [ R.lastX , _pass , _pass , _pass , R.sigma ] ,
-[ _pass , _pass , _pass , R.invert , _pass ]])
+[ lambda: R.setX(0) , _pass , _pass , R.invert , _pass ]])
 
 
 """ ------ Algoritme de presentation ------ """

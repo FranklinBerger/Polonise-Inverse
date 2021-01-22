@@ -39,6 +39,7 @@ import RPN
 import Clavier_RPN
 import PCF8574
 import LCD_2004
+import CONSTANTES
 
 
 
@@ -64,8 +65,8 @@ def init():
 
     # Ouverture sypmathique
     LCD_2004.writeLine("Calculatrice RPN") # Ligne 1
-    LCD_2004.writeLine("Sleny Martinez")   # Ligne 2
-    LCD_2004.writeLine("ETML 2020 - 2021") # Ligne 3
+    LCD_2004.writeLine("ETML Preap 2020-2021")   # Ligne 2
+    LCD_2004.writeLine(CONSTANTES.NOM_PRENOM) # Ligne 3
     LCD_2004.writeLine("Loading", full = False) # Ligne 4 puis ...
     for i in range(20 - len("Loading")):
         LCD_2004.writeChar(".")

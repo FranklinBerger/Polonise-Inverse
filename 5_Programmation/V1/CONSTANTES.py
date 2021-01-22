@@ -28,3 +28,5 @@ DEBUG_MODE_MAIN = micropython.const(True)
 DEBUG_MODE_CLAVIER = micropython.const(True)
 # Affiche les activites de l'ecrant
 DEBUG_MODE_LCD = micropython.const(True)
+# Nom et Prénom pour l'allumage
+NOM_PRENOM = "Pierre Aubert"
