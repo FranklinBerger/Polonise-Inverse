@@ -448,14 +448,6 @@ def toDec ():
     _setX( get("X")  )
 
 
-def hack ():
-    global _pile
-    _pile["T"] = "U hav been pwned"
-    _pile["Z"] = "Take care of you'r"
-    _pile["Y"] = "network and PC"
-    _pile["X"] = "Frankline here!"
-
-
 """ ------ Algoritme de presentation ------ """
 if __name__ == "__main__":
     # Affichage doc du fichier

@@ -34,12 +34,14 @@ if DEBUG_MODE_CLAVIER: micropython.alloc_emergency_exception_buf(128)
 
 # Imports bibliotheques interne
 import machine
+import time
 
 
 # Imports bibliotheques externe officielle (lib)
 # Imports bibliotheques externe maisons
 import RPN as R
 import Clavier
+import LCD_RPN
 
 
 """ ------ Code Utile ------ """
@@ -76,8 +78,8 @@ def exec ():
             if DEBUG_MODE_CLAVIER: print(_actionTouche[touche[0]][touche[1]])
         else:
             # On fait la fonction et on desactive le 2nd
-            _2nd = False
             _actionTouche2nd[touche[0]][touche[1]]()
+            _2nd = False
             if DEBUG_MODE_CLAVIER: print(_actionTouche2nd[touche[0]][touche[1]])
 
 def _2ndAct ():
@@ -87,7 +89,7 @@ def _2ndAct ():
     (s'echange a chaque pression de la touche 2nd)
     """
     global _2nd
-    _2nd = not _2nd
+    _2nd = False if _2nd else True
     # print("2nd : " + str(_2nd))
 
 def _pass ():
@@ -112,6 +114,26 @@ def haveToAct ():
     """
     return True if Clavier.any() != 0 else False
 
+def hack ():
+    """while True:
+        R._pile["T"] = ". . . . . . . . . "
+        R._pile["Z"] = " . . .Pipoune. . ."
+        R._pile["Y"] = ". . . . . . . . . "
+        R._pile["X"] = " . . . . . . . . ."
+        LCD_RPN.showRPN()
+        time.sleep_ms(500)
+        R._pile["T"] = " . . . . . . . . ."
+        R._pile["Z"] = ". . . Pipoune . . "
+        R._pile["Y"] = " . . . . . . . . ."
+        R._pile["X"] = ". . . . . . . . . "
+        LCD_RPN.showRPN()
+        time.sleep_ms(500)"""
+
+    R._pile["T"] = CREDIT_TEXT[0]
+    R._pile["Z"] = CREDIT_TEXT[1]
+    R._pile["Y"] = CREDIT_TEXT[2]
+    R._pile["X"] = CREDIT_TEXT[3]
+
 
 """ ------ Base de donnees ------ """
 # Fonctionnement des touches
@@ -127,7 +149,7 @@ _actionTouche = micropython.const(
 [ R.delX , lambda: R.writeX("0") , lambda: R.writeX(".") , R.opposite , R.shiftUp ]])
 
 _actionTouche2nd = micropython.const(
-[[ _2ndAct , R.toBin , R.toHex , R.toDec , R.hack ] ,
+[[ _2ndAct , R.toBin , R.toHex , R.toDec , hack ] ,
 [ R.arcsin , R.arccos , R.arctan, R.log , R.ln ] ,
 [ lambda: R.writeX("e-") , R.e , R.square_root , R.root , R.modulo ] ,
 [ _pass , lambda:R.writeX("A") , lambda:R.writeX("B") , lambda:R.writeX("C") , R.factorial] ,

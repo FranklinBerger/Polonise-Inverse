@@ -64,9 +64,9 @@ def init():
     create2ndChar()
 
     # Ouverture sypmathique
-    LCD_2004.writeLine("Calculatrice RPN") # Ligne 1
-    LCD_2004.writeLine("ETML Preap 2020-2021")   # Ligne 2
-    LCD_2004.writeLine(CONSTANTES.NOM_PRENOM) # Ligne 3
+    LCD_2004.writeLine(CONSTANTES.START_TEXT[0]) # Ligne 1
+    LCD_2004.writeLine(CONSTANTES.START_TEXT[2]) # Ligne 2
+    LCD_2004.writeLine(CONSTANTES.START_TEXT[1]) # Ligne 3
     LCD_2004.writeLine("Loading", full = False) # Ligne 4 puis ...
     for i in range(20 - len("Loading")):
         LCD_2004.writeChar(".")

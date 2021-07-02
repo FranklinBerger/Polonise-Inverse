@@ -28,5 +28,15 @@ DEBUG_MODE_MAIN = micropython.const(True)
 DEBUG_MODE_CLAVIER = micropython.const(True)
 # Affiche les activites de l'ecrant
 DEBUG_MODE_LCD = micropython.const(True)
-# Nom et Prénom pour l'allumage
-NOM_PRENOM = "Pierre Aubert"
+# Texte affiche pour l'allumage
+START_TEXT = [
+"Calculatrice RPN",
+"ETML 2020-2021",
+"Frankline Berger"]
+
+# Texte de credits si 2nd + Clear
+CREDIT_TEXT = [
+"Calculatrice RPN",
+"ETML 2020-2021",
+"V1.0 Avril 2021",
+"@FranklinBerger"]
